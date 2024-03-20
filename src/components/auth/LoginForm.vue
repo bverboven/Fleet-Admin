@@ -1,0 +1,62 @@
+<template>
+    <form @submit.prevent="handleSubmit" ref="loginForm" :style="{ 'min-height': minHeight }">
+        <div class="mb-3 position-relative" v-if="failed">
+            <div class="bg-danger border rounded text-light p-2">
+                {{ t("signInErrorMsg") }}
+                <span v-if="isLockedOut">{{ t("tryAgainInMin", { minutes: 5 }) }}</span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">{{ t("username") }}</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input class="form-control" autocomplete="username email" v-model="username" :disabled="signingIn" />
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">{{ t("password") }}</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" autocomplete="password current-password" v-model="password" :disabled="signingIn" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary" :disabled="signingIn">{{ t("signIn") }}</button>
+            </div>
+            <div class="col-auto">
+                <span v-if="signingIn" class="text-info">
+                    <Loading class="me-1" style="width: 2rem" />
+                    {{ t("signingIn") }}
+                </span>
+                <button v-else type="button" class="btn btn-link" @click="handleForgotPassword">{{ t("forgotPassword") }}</button>
+            </div>
+        </div>
+    </form>
+</template>
+
+<script setup lang="ts">
+import { ref, computed } from "vue"
+import { useConfig } from "@/app-config"
+import { useLoginForm, type ILoginEmits, type ILoginProps } from "@/regira_modules/vue/auth"
+import { Loading } from "@/regira_modules/vue/ui"
+import { useUserLang } from "./useUserLang"
+
+interface IEmits extends ILoginEmits {}
+const emit = defineEmits<IEmits>()
+
+const props: ILoginProps = defineProps<{
+    username?: string
+    signingIn?: boolean
+}>()
+
+const { username, password, signingIn, failed, isLockedOut, handleSubmit, handleForgotPassword } = useLoginForm(props, emit)
+
+const appConfig = useConfig()
+const minHeight = computed(() => (appConfig.isDemo && showUsersList.value ? "22rem" : "10rem"))
+const showUsersList = ref(false)
+
+// translate
+const { t } = useUserLang()
+</script>
+./useUserLang

@@ -1,0 +1,20 @@
+{
+    "loginUrl": "auth/?clientApp=fleet-admin",
+    "api": {
+        "development": "https://localhost:7215/",
+        "_development": "https://fleet.regira.com/admin/api",
+        "production": "https://fleet.regira.com/admin/api"
+    },
+    "includeCredentials": false,
+    "isDebug": true,
+
+    "title": {
+        "en": "Regira Fleet Admin",
+        "fr": "Regira gestionnaire de flotte",
+        "nl": "Regira Vloot Admin"
+    },
+
+    "entities": ["clients", "users"],
+    "dashboard": ["clients", "users"],
+    "navbar": ["clients", "users"]
+}
