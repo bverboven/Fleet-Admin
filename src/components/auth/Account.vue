@@ -10,13 +10,13 @@
                     <li class="list-group-item">
                         <button type="button" class="btn btn-default p-1" @click="showChangePassword = !showChangePassword">
                             <Icon name="security" class="me-1" />
-                            {{ t("changePassword") }}
+                            {{ $t("auth.changePassword") }}
                         </button>
                     </li>
                     <li class="list-group-item">
                         <button type="button" class="btn btn-default p-1" @click="handleLogout">
                             <Icon name="exit" class="me-1" />
-                            {{ t("signOut") }}
+                            {{ $t("auth.signOut") }}
                         </button>
                     </li>
                 </ul>
@@ -36,9 +36,6 @@
 import { ref } from "vue"
 import { useAuthStore } from "@/regira_modules/vue/auth"
 import ChangePasswordForm from "./ChangePasswordForm.vue"
-import { useUserLang } from "./useUserLang"
-
-const { t } = useUserLang()
 
 const showChangePassword = ref(false)
 

@@ -1,1 +1,182 @@
-{}
+{
+    "auth.changePassword": {
+        "en": "Change password",
+        "nl": "Wachtwoord aanpassen",
+        "fr": "Changer de mot de passe"
+    },
+    "auth.currentPassword": {
+        "en": "current password",
+        "nl": "huidig wachtwoord",
+        "fr": "mot de passe actuel"
+    },
+    "auth.fillInUsernameMsg": {
+        "en": "Fill in username to request a password reset.",
+        "nl": "Vul je gebruikersnaam in om je wachtwoord opnieuw in te stellen",
+        "fr": "Saisissez votre nom d'utilisateur pour demander une réinitialisation de votre mot de passe."
+    },
+    "auth.forgotPassword": {
+        "en": "Forgot password?",
+        "nl": "Wachtwoord vergeten?",
+        "fr": "Mot de passe oublié ?"
+    },
+    "auth.myAccount": {
+        "en": "My Account",
+        "nl": "Mijn account",
+        "fr": "Mon compte"
+    },
+    "auth.newPassword": {
+        "en": "new password",
+        "nl": "nieuw wachtwoord",
+        "fr": "nouveau mot de passe"
+    },
+    "auth.password": {
+        "en": "Password",
+        "nl": "Wachtwoord",
+        "fr": "Mot de passe"
+    },
+    "auth.passwordResetReceivedMsg": {
+        "en": "Password reset request received. Please check your email.",
+        "nl": "Je aanvraag is ontvangen, gelieve je e-mail te controleren.",
+        "fr": "Demande de réinitialisation du mot de passe reçue. Veuillez vérifier votre e-mail."
+    },
+    "auth.passwordResetSent": {
+        "en": "Reset request sent",
+        "nl": "Je aanvraag is verstuurd",
+        "fr": "Demande de réinitialisation envoyée"
+    },
+    "auth.passwordResetFailed": {
+        "en": "Reset request failed",
+        "nl": "Je aanvraag is mislukt",
+        "fr": "Échec de la demande de réinitialisation"
+    },
+    "auth.passwordsMustMatch": {
+        "en": "Passwords must match.",
+        "nl": "Wachtwoorden komen niet overeen",
+        "fr": "Les mots de passe doivent correspondre."
+    },
+    "auth.repeatPassword": {
+        "en": "repeat password",
+        "nl": "herhaal wachtwoord",
+        "fr": "répéter le mot de passe"
+    },
+    "auth.signIn": {
+        "en": "Sign in",
+        "nl": "Aanmelden",
+        "fr": "Se connecter"
+    },
+    "auth.signOut": {
+        "en": "Sign out",
+        "nl": "Afmelden",
+        "fr": "Se déconnecter"
+    },
+    "auth.signingIn": {
+        "en": "Signing in ...",
+        "nl": "Aan het aanmelden ...",
+        "fr": "Connexion en cours..."
+    },
+    "auth.signInInfo": {
+        "en": "Fill in username & password to sign in",
+        "nl": "Vul je gebruikersnaam & wachtwoord in",
+        "fr": "Saisissez votre nom d'utilisateur et votre mot de passe pour vous connecter."
+    },
+    "auth.signInErrorMsg": {
+        "en": "Unfortunately, signing in failed.",
+        "nl": "Helaas, het aanmelden is mislukt.",
+        "fr": "Malheureusement, la connexion a échoué."
+    },
+    "auth.tryAgainInMin": {
+        "en": "Try again in {minutes} min.",
+        "nl": "Probeer opnieuw in {minutes} min.",
+        "fr": "Réessayez dans {minutes} min."
+    },
+    "auth.username": {
+        "en": "Username",
+        "nl": "Gebruikersnaam",
+        "fr": "Identifiant"
+    },
+    "filter.keywords": {
+        "en": "keyword(s)",
+        "nl": "zoekwoord(en)",
+        "fr": "Mot(s)-clé"
+    },
+    "filter.filtersAreApplied": {
+        "en": "Filters are applied",
+        "nl": "Filters actief",
+        "fr": "Filtres appliqués"
+    },
+    "entities.client": {
+        "en": "Client",
+        "nl": "Klant",
+        "fr": "Client"
+    },
+    "entities.clients": {
+        "en": "Clients",
+        "nl": "Klanten",
+        "fr": "Clients"
+    },
+    "entities.clientsDescription": {
+        "en": "Manage clients",
+        "nl": "Beheer klanten",
+        "fr": "Gérer les clients"
+    },
+    "entities.user": {
+        "en": "User",
+        "nl": "Gebruiker",
+        "fr": "Utilisateur"
+    },
+    "entities.users": {
+        "en": "Users",
+        "nl": "Gebruikers",
+        "fr": "Utilisateurs"
+    },
+    "entities.usersDescription": {
+        "en": "Manage users",
+        "nl": "Beheer gebruikers",
+        "fr": "Gérer les utilisateurs"
+    },
+    "fleetManager": {
+        "en": "Fleet Manager",
+        "nl": "Vlootmanager",
+        "fr": "Gestionnaire de parc"
+    },
+    "forms.codePlaceholder": {
+        "en": "code or abbr.",
+        "nl": "code of afkorting",
+        "fr": "code ou abrév."
+    },
+    "forms.new": {
+        "en": "New",
+        "nl": "Nieuw",
+        "fr": "Nouveau"
+    },
+    "overview.noResults": {
+        "en": "No items",
+        "nl": "Geen resultaten",
+        "fr": "Aucun résultat"
+    },
+    "overview.results": {
+        "en": "results",
+        "nl": "resultaten",
+        "fr": "Résultats"
+    },
+    "code": {
+        "en": "Code",
+        "nl": "Code",
+        "fr": "Code"
+    },
+    "name": {
+        "en": "Name",
+        "nl": "Naam",
+        "fr": "Nom"
+    },
+    "form": {
+        "en": "Form",
+        "nl": "Formulier",
+        "fr": "Formulaire"
+    },
+    "welcome": {
+        "en": "Welcome {name}",
+        "nl": "Welkom {name}",
+        "fr": "Bienvenue {name}"
+    }
+}

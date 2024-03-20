@@ -1,12 +1,12 @@
 <template>
     <form @submit.prevent="handleSubmit" style="height: 10rem">
         <div class="mb-2">
-            <div v-if="feedback.status.value == FeedbackStatus.none" class="text-info">{{ t("fillInUsernameMsg") }}</div>
+            <div v-if="feedback.status.value == FeedbackStatus.none" class="text-info">{{ $t("auth.fillInUsernameMsg") }}</div>
             <Feedback v-else :feedback="feedback" />
         </div>
         <LoadingContainer :is-loading="isLoading">
             <div class="row mb-2">
-                <label class="d-none d-sm-block col-sm-3 col-form-label">{{ t("username") }}</label>
+                <label class="d-none d-sm-block col-sm-3 col-form-label">{{ $t("auth.username") }}</label>
                 <div class="col">
                     <input type="text" class="form-control" name="username" v-model="username" autocomplete="username" required :readonly="isSuccess" />
                 </div>
@@ -14,12 +14,12 @@
             <div class="row">
                 <div class="col">
                     <div v-if="isSuccess">
-                        <p class="text-success">{{ t("passwordResetReceivedMsg") }}</p>
+                        <p class="text-success">{{ $t("auth.passwordResetReceivedMsg") }}</p>
                     </div>
                     <button v-else type="submit" class="btn btn-primary" :disabled="!isFormValid">{{ $t("submit") }}</button>
                 </div>
                 <div class="col-auto">
-                    <button type="button" class="btn btn-link px-0" @click="$emit('login', username)">{{ t("signIn") }}</button>
+                    <button type="button" class="btn btn-link px-0" @click="$emit('login', username)">{{ $t("auth.signIn") }}</button>
                 </div>
             </div>
         </LoadingContainer>
@@ -32,7 +32,6 @@ import { useRouter } from "vue-router"
 import { LoadingContainer, Feedback, useFeedback, FeedbackStatus } from "@/regira_modules/vue/ui"
 import { useForgotPasswordForm, type IForgotPasswordEmits, type IForgotPasswordProps } from "@/regira_modules/vue/auth"
 import { useConfig } from "@/app-config"
-import { useUserLang } from "./useUserLang"
 
 interface IEmits extends IForgotPasswordEmits {}
 const emit = defineEmits<IEmits>()
@@ -43,7 +42,6 @@ const props: IForgotPasswordProps = defineProps<{
 
 const config = useConfig()
 const router = useRouter()
-const { t, tm } = useUserLang()
 
 const resetPasswordRoute = router.resolve({ name: "resetPassword" })
 const siteUrl = `${location.protocol}//${location.host}${config.baseUrl}${resetPasswordRoute.fullPath}`
@@ -60,4 +58,4 @@ watchEffect(() => {
         feedback.reset()
     }
 })
-</script>./useUserLang
+</script>

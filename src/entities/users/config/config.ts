@@ -13,9 +13,9 @@ const config: IConfig = {
     },
     initialQuery: {},
 
-    overviewTitle: "users",
-    detailsTitle: "user",
-    description: "usersDescription",
+    overviewTitle: "entities.users",
+    detailsTitle: "entities.user",
+    description: "entities.usersDescription",
     icon: "bi bi-building-fill-gear",
 
     defaultPageSize: 10,

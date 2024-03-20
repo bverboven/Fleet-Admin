@@ -22,11 +22,11 @@
         </footer>
 
         <Teleport to="#loginModal">
-            <LoginModal :is-visible="showLogin" :title="$t('signIn')">
-                <LoginForm :username="username" @forgot-password="openForgotPassword" />
+            <LoginModal :is-visible="showLogin" :title="$t('auth.signIn')">
+                <LoginForm :username="username" class="mt-2" @forgot-password="openForgotPassword" />
             </LoginModal>
             <ForgotPasswordModal :is-visible="showForgotPassword" @close="showForgotPassword = false">
-                <ForgotPassword :username="username" @login="openLogin" />
+                <ForgotPassword :username="username" class="mt-2" @login="openLogin" />
             </ForgotPasswordModal>
         </Teleport>
     </div>

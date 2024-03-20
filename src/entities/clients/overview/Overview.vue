@@ -15,12 +15,9 @@
                 <Feedback v-bind="{ feedback }" :hideCloseButton="true" />
             </div>
             <div class="col-auto order-2 order-lg-3 ps-2">
-                <RouterLink v-if="!$isReadonlyUser" :to="{ name: Entity.name + 'Details', params: { id: 'new' } }" class="btn btn-info">
-                    <Icon name="new" /><span class="d-none d-sm-inline ms-1">{{ $t("new") }}</span>
+                <RouterLink :to="{ name: Entity.name + 'Details', params: { id: 'new' } }" class="btn btn-info">
+                    <Icon name="new" /><span class="d-none d-sm-inline ms-1">{{ $t("forms.new") }}</span>
                 </RouterLink>
-                <button v-else type="button" class="btn btn-info" disabled>
-                    <Icon name="new" /><span class="d-none d-sm-inline ms-1">{{ $t("new") }}</span>
-                </button>
             </div>
         </div>
 
@@ -46,7 +43,6 @@
         <LoadingContainer :is-loading="isLoading">
             <component
                 :is="List"
-                :readonly="$isReadonlyUser"
                 v-if="items && items.length > 0"
                 v-model="items"
                 @request-save="handleRequestSave"

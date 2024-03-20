@@ -8,21 +8,21 @@
             <div class="row mb-2">
                 <div class="col">
                     <input type="password" class="form-control" name="currentPassword" v-model="model.currentPassword" autocomplete="password" placeholder="********" required />
-                    <FormLabel :label="t('currentPassword')" />
+                    <FormLabel :label="$t('auth.currentPassword')" />
                 </div>
             </div>
             <div class="row mb-2">
                 <div class="col">
                     <input type="password" class="form-control" name="newPassword" v-model="model.newPassword" autocomplete="new-password" required />
-                    <FormLabel :label="t('newPassword')" />
+                    <FormLabel :label="$t('auth.newPassword')" />
                 </div>
             </div>
             <div class="row mb-2">
                 <div class="col">
                     <input type="password" class="form-control" name="passwordRepeat" v-model="passwordRepeat" autocomplete="new-password" :class="{ 'is-invalid': !pwdMatches }" required />
-                    <FormLabel :label="t('repeatPassword')" />
+                    <FormLabel :label="$t('auth.repeatPassword')" />
                     <div>
-                        <small v-if="passwordRepeat && !pwdMatches" class="form-text text-danger">{{ t("passwordsMustMatch") }}</small>
+                        <small v-if="passwordRepeat && !pwdMatches" class="form-text text-danger">{{ $t("auth.passwordsMustMatch") }}</small>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,6 @@
 import { ref, reactive, computed } from "vue"
 import { LoadingContainer, Feedback, useFeedback } from "@/regira_modules/vue/ui"
 import { useAuth } from "@/regira_modules/vue/auth"
-import { useUserLang } from "./useUserLang"
 
 const emit = defineEmits<{
     (e: "change-password"): void
@@ -48,7 +47,6 @@ defineProps<{
     username: string
 }>()
 
-const { t } = useUserLang()
 const feedback = useFeedback()
 const { service } = useAuth()
 
