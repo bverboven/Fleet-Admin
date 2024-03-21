@@ -120,9 +120,9 @@ fetch(`${appConfig.baseUrl}/config.json?v=${formatDateTime(new Date(), "yyyyMMdd
                     app.config.globalProperties.$feedback.success(welcomeMsg)
 
                     // preloading
-                    const preloaderTypes = [Country]
-                    const { preload } = usePreloader()
-                    await preload(preloaderTypes as any)
+                    // const preloaderTypes = [Country]
+                    // const { preload } = usePreloader()
+                    // await preload(preloaderTypes as any)
 
                     // ready
                     app.config.globalProperties.$setCulture(auth.culture)

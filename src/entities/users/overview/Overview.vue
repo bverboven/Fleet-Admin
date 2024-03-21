@@ -16,7 +16,7 @@
             </div>
             <div class="col-auto order-2 order-lg-3 ps-2">
                 <RouterLink :to="{ name: Entity.name + 'Details', params: { id: 'new' } }" class="btn btn-info">
-                    <Icon name="new" /><span class="d-none d-sm-inline ms-1">{{ $t("new") }}</span>
+                    <Icon name="new" /><span class="d-none d-sm-inline ms-1">{{ $t("forms.new") }}</span>
                 </RouterLink>
             </div>
         </div>

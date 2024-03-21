@@ -164,6 +164,11 @@
         "nl": "Code",
         "fr": "Code"
     },
+    "culture": {
+        "en": "Culture",
+        "nl": "Cultuur",
+        "fr": "Culture"
+    },
     "name": {
         "en": "Name",
         "nl": "Naam",

@@ -2,7 +2,7 @@ import { EntityBase } from "@/regira_modules/vue/entities"
 
 export class ClientUser extends EntityBase {
     id!: string
-    username!: string
+    userName!: string
     email!: string
     givenName?: string
     surname?: string
@@ -14,7 +14,7 @@ export class ClientUser extends EntityBase {
         return this.id || "new"
     }
     override get $title(): string | undefined {
-        return `${this.givenName} ${this.surname}`.trim()
+        return `${this.givenName || ""} ${this.surname || ""}`.trim() || this.userName
     }
 }
 
