@@ -1,5 +1,0 @@
-export * from "./icons"
-export { default as BsIcon } from "./BsIcon.vue"
-export { default as FaIcon } from "./FaIcon.vue"
-export { default as IconButton } from "./IconButton.vue"
-export { default as plugin, default, type IIconProvider } from "./plugin"
