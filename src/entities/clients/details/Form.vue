@@ -19,7 +19,7 @@
 
         <div class="row">
             <div class="col">
-                <FormSection :title="$tm(config.detailsTitle)" :readonly="readonly">
+                <FormSection :title="$t(config.detailsTitle)" :readonly="readonly">
                     <div class="row">
                         <div class="col-md mb-2">
                             <div class="input-group">

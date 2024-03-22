@@ -9,19 +9,19 @@
             @click="emit('restore')"
             :disabled="status != '' && status != FeedbackStatus.failed"
         >
-            <span class="d-none d-md-inline ms-1">Restore</span>
+            <span class="d-none d-md-inline ms-1">{{ $t("forms.restore") }}</span>
         </IconButton>
         <template v-else>
             <IconButton v-if="!isArchived" type="submit" icon="save" class="btn-primary py-1 me-2" :disabled="readonly || (status != '' && status != FeedbackStatus.failed)">
-                <span class="d-none d-md-inline ms-1">{{ $t("save") }}</span>
+                <span class="d-none d-md-inline ms-1">{{ $t("forms.save") }}</span>
             </IconButton>
             <IconButton type="button" icon="cancel" class="btn-secondary py-1 mx-2" @click="emit('cancel')" :disabled="readonly || !canCancel">
-                <span class="d-none d-md-inline ms-1">{{ $t("reset") }}</span>
+                <span class="d-none d-md-inline ms-1">{{ $t("forms.reset") }}</span>
             </IconButton>
             <ConfirmButton
                 type="button"
                 :modal-type="ModalType.danger"
-                :modal-title="$t('removeItem?')"
+                :modal-title="$t('forms.removeItem?')"
                 class="btn-danger py-1 ms-2"
                 :disabled="readonly"
                 v-show="showDelete"
@@ -29,10 +29,10 @@
             >
                 <template #button-content>
                     <Icon name="delete" class="me-1" />
-                    <span class="d-none d-md-inline">{{ $t("delete") }}</span>
+                    <span class="d-none d-md-inline">{{ $t("forms.delete") }}</span>
                 </template>
                 <template #default>
-                    <slot name="delete">{{ $t("deleteItem", { title: item?.$title }) }}</slot>
+                    <slot name="delete">{{ $t("forms.deleteItem", { title: item?.$title }) }}</slot>
                 </template>
             </ConfirmButton>
         </template>

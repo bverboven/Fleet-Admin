@@ -1,7 +1,7 @@
 import { EntityBase } from "@/regira_modules/vue/entities"
 
 export class Client extends EntityBase {
-    id: number = 0
+    id?: string
     guid!: string
     code?: string
     title!: string

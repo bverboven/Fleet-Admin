@@ -51,7 +51,7 @@
                 @remove="handleRemove"
                 @request-reload="updateOverviewRoute(false)"
             />
-            <p v-if="items && items.length <= 0" class="italic-muted">{{ $t("noResults") }}</p>
+            <p v-if="items && items.length <= 0" class="italic-muted">{{ $t("overview.noResults") }}</p>
         </LoadingContainer>
 
         <!-- Paging -->

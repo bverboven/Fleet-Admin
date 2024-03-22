@@ -149,6 +149,41 @@
         "nl": "Nieuw",
         "fr": "Nouveau"
     },
+    "forms.delete": {
+        "en": "Delete",
+        "nl": "Verwijder",
+        "fr": "Supprimer"
+    },
+    "forms.deleteItem": {
+        "en": "Delete item '{title}'?",
+        "nl": "Verwijder '{title}'?",
+        "fr": "Supprimer l'élément '{title}' ?"
+    },
+    "forms.popOut": {
+        "en": "Pop out",
+        "nl": "Nieuw venster",
+        "fr": "Nouv. fenêtre"
+    },
+    "forms.removeItem?": {
+        "en": "Remove item?",
+        "nl": "Item verwijderen?",
+        "fr": "Supprimer l'élément ?"
+    },
+    "forms.reset": {
+        "en": "Reset",
+        "nl": "Opnieuw",
+        "fr": "Réinitialiser"
+    },
+    "forms.restore": {
+        "en": "Restore",
+        "nl": "Herstellen",
+        "fr": "Réparér"
+    },
+    "forms.save": {
+        "en": "Save",
+        "nl": "Opslaan",
+        "fr": "Enregistrer"
+    },
     "overview.noResults": {
         "en": "No items",
         "nl": "Geen resultaten",
@@ -158,6 +193,16 @@
         "en": "results",
         "nl": "resultaten",
         "fr": "Résultats"
+    },
+    "overview": {
+        "en": "Overview",
+        "nl": "Overzicht",
+        "fr": "Vue d'ensemble"
+    },
+    "notes": {
+        "en": "Notes",
+        "nl": "Nota's",
+        "fr": "Remarques"
     },
     "code": {
         "en": "Code",
