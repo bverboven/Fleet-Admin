@@ -31,7 +31,7 @@
             </div>
             <div class="col-auto order-2 mb-2">
                 <FormModalButton :item-defaults="itemDefaults" :close-on-save="true" @save="({ saved }) => handleSelect(saved)" class="btn btn-info">
-                    <Icon name="new" /> <span class="d-none d-sm-inline">{{ $t("new") }}</span>
+                    <Icon name="new" /> <span class="d-none d-sm-inline">{{ $t("forms.new") }}</span>
                 </FormModalButton>
             </div>
         </div>

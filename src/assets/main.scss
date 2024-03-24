@@ -101,6 +101,9 @@ $bgLight: rgba(13, 202, 240, 0.25);
     .form-section-title {
         background-color: $bgLight;
     }
+    .form-section-body {
+        padding-top: 0.25rem;
+    }
 }
 
 .list-view {

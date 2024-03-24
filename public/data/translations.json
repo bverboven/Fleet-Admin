@@ -184,6 +184,21 @@
         "nl": "Opslaan",
         "fr": "Enregistrer"
     },
+    "claims.canRead": {
+        "en": "Read",
+        "nl": "Lezen",
+        "fr": "Lire"
+    },
+    "claims.canWrite": {
+        "en": "Write",
+        "nl": "Schrijven",
+        "fr": "Ecrire"
+    },
+    "claims.admin": {
+        "en": "Admin",
+        "nl": "Beheerder",
+        "fr": "Admin"
+    },
     "overview.noResults": {
         "en": "No items",
         "nl": "Geen resultaten",
@@ -198,6 +213,16 @@
         "en": "Overview",
         "nl": "Overzicht",
         "fr": "Vue d'ensemble"
+    },
+    "givenName": {
+        "en": "Given name",
+        "nl": "Voornaam",
+        "fr": "Prénom"
+    },
+    "lastName": {
+        "en": "Last name",
+        "nl": "Achternaam",
+        "fr": "Nom de famille"
     },
     "notes": {
         "en": "Notes",
@@ -223,6 +248,21 @@
         "en": "Form",
         "nl": "Formulier",
         "fr": "Formulaire"
+    },
+    "permissions": {
+        "en": "Permissions",
+        "nl": "Rechten",
+        "fr": "Autorisations"
+    },
+    "passwordLabel": {
+        "en": "(New) password",
+        "nl": "(Nieuw) wachtwoord",
+        "fr": "(Nouveau) mot de passe"
+    },
+    "usernameLabel": {
+        "en": "Username/Email",
+        "nl": "Gebruikersnaam/E-mail",
+        "fr": "Nom d'utilisateur, Addresse é-mail"
     },
     "welcome": {
         "en": "Welcome {name}",

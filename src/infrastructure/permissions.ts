@@ -1,5 +1,8 @@
 export enum Permissions {
-    ADMIN = "super_user",
+    CAN_READ = "can_read",
+    CAN_WRITE = "can_write",
+    ADMIN = "admin",
+    SUPER_USER = "super_user",
 }
 
 export default Permissions

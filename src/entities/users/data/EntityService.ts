@@ -8,6 +8,12 @@ export class EntityService extends EntityServiceBase<Entity> {
         console.debug("ClientUserService", this, { config })
     }
 
+    protected override prepareItem(item: Entity): Entity {
+        item.userClaims = item.userClaims?.filter((x) => !x._deleted)
+        item.clientClaims = item.clientClaims?.filter((x) => !x._deleted)
+        return item
+    }
+
     override toEntity(item: object): Entity {
         return item instanceof Entity ? item : Object.assign(this.createInstance(Entity as new () => Entity), item || {})
     }

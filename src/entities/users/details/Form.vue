@@ -23,22 +23,52 @@
                     <div class="row">
                         <div class="col-md mb-2">
                             <div class="input-group">
-                                <div class="input-group-text"><Icon name="code" /></div>
-                                <input v-model="item.code" maxlength="8" :readonly="readonly" class="form-control" />
+                                <div class="input-group-text"><Icon name="email" /></div>
+                                <input v-model="item.userName" maxlength="256" :readonly="readonly" class="form-control" />
                             </div>
-                            <FormLabel :label="$t('code')" />
+                            <FormLabel :label="$t('usernameLabel')" />
+                        </div>
+                        <div class="col-md mb-2">
+                            <div class="input-group">
+                                <div class="input-group-text"><Icon name="key" /></div>
+                                <input v-model="item.newPassword" maxlength="256" :readonly="readonly" class="form-control" />
+                            </div>
+                            <FormLabel :label="$t('passwordLabel')" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md mb-2">
+                            <div class="input-group">
+                                <div class="input-group-text"><Icon name="title" /></div>
+                                <input v-model="item.givenName" maxlength="256" :readonly="readonly" class="form-control" />
+                            </div>
+                            <FormLabel :label="$t('givenName')" />
                         </div>
                         <div class="col-md mb-2">
                             <div class="input-group">
                                 <div class="input-group-text"><Icon name="title" /></div>
-                                <input v-model="item.title" maxlength="128" :readonly="readonly" class="form-control" />
+                                <input v-model="item.lastName" maxlength="256" :readonly="readonly" class="form-control" />
                             </div>
-                            <FormLabel :label="$t('name')" />
+                            <FormLabel :label="$t('lastName')" />
+                        </div>
+                    </div>
+                </FormSection>
+
+                <FormSection :title="$t('permissions')">
+                    <div v-for="client in item.clients" :key="client.id!" class="row">
+                        <div class="col-sm mb-2">
+                            <ClientInput :modelValue="client" />
+                        </div>
+                        <div class="col mb-2">
+                            <ClientClaimsInput v-model="item.clientClaims!" :client="client" />
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-sm mb-2">
+                            <ClientInput :modelValue="newClient" @select="handleAddClient" ref="newClientEl" />
+                        </div>
                         <div class="col mb-2">
-                            <DescriptionInput v-model="item.description" :label="$t('notes')" :readonly="readonly" />
+                            <ClientClaimsInput v-model="item.clientClaims!" :client="newClient" />
                         </div>
                     </div>
                 </FormSection>
@@ -54,6 +84,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue"
 import type { RouteRecordRaw } from "vue-router"
 import { Feedback } from "@/regira_modules/vue/ui"
 import { FormButtonsRow } from "@/components/input"
@@ -61,6 +92,9 @@ import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/enti
 import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"
+import ClientClaimsInput from "../claims/ClientClaimsInput.vue"
+import { type Entity as Client, InputSelector as ClientInput } from "../../clients"
+import Permissions from "@/infrastructure/permissions"
 
 interface Emits extends /* @vue-ignore */ FormEmits<Entity> {}
 const emit = defineEmits<Emits>()
@@ -78,4 +112,15 @@ const props = withDefaults(
 const { service: entityService } = useEntityStore()
 
 const { item, feedback, handleCancel, handleSubmit, handleRemove, handleRestore } = useForm<Entity>({ entityService, props, emit })
+
+const newClientEl = ref<any>(null)
+const newClient = ref<Client>()
+function handleAddClient(client?: Client) {
+    if (client == null || item.value.clients?.some((c) => c.id == client?.id)) {
+        return
+    }
+    item.value.clientClaims?.push({ clientId: client.id!, claimType: "permissions", claimValue: Permissions.CAN_READ })
+    item.value.clients?.push(client)
+    newClientEl.value.resetQ()
+}
 </script>

@@ -20,7 +20,7 @@ export function createRoutes(): Array<RouteRecordRaw> {
             name: `${key}Overview`,
             component: Overview,
             meta: {
-                permissions: [Permissions.ADMIN],
+                permissions: [Permissions.SUPER_USER],
             },
         },
         {
@@ -41,14 +41,14 @@ export function createRoutes(): Array<RouteRecordRaw> {
             ],
             redirect: () => ({ name: `${key}Form` }),
             meta: {
-                permissions: [Permissions.ADMIN],
+                permissions: [Permissions.SUPER_USER],
             },
         },
     ] as Array<RouteRecordRaw>
 }
 
 export function addServices(serviceProvider: IServiceProvider) {
-    serviceProvider.add(Entity.name, (sp) => new EntityService(sp.get<AxiosInstance>("axios")!, config))
+    serviceProvider.add(Entity.name, (sp: IServiceProvider) => new EntityService(sp.get<AxiosInstance>("axios")!, config))
 }
 export function addIcons(icons: IIconProvider) {
     icons.add(Entity.name, config.icon!)
