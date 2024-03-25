@@ -28,9 +28,9 @@ export class ClientUser extends EntityBase {
     currentPassword?: string
     newPassword?: string
 
-    clients?: Array<Client>
-    userClaims?: Array<IUserClaim>
-    clientClaims?: Array<IClientClaim>
+    clients?: Array<Client> = []
+    userClaims?: Array<IUserClaim> = []
+    clientClaims?: Array<IClientClaim> = []
 
     override get $id(): string | number {
         return this.id || "new"

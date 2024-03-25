@@ -2,7 +2,7 @@
     <button type="button" class="btn btn-default" @click="open">
         <slot><Icon name="search" /></slot>
         <Teleport to="#modals">
-            <MyModal :is-visible="isOpen" :title="$tm(config.overviewTitle)" :showFooter="true" :full-width="true" @close="close" @cancel="handleCancel" @submit="handleSubmit">
+            <MyModal :is-visible="isOpen" :title="$t(config.overviewTitle)" :showFooter="true" :full-width="true" @close="close" @cancel="handleCancel" @submit="handleSubmit">
                 <SelectorSearch v-model="selected" :filter-defaults="filterDefaults" :page-size="5" />
             </MyModal>
         </Teleport>

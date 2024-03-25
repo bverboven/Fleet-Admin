@@ -2,7 +2,7 @@
     <button type="button" class="btn btn-default" @click="open">
         <slot><Icon :name="Entity.name" /></slot>
         <Teleport to="#modals">
-            <MyModal :is-visible="isOpen" :title="modalTitle || $tm(config.detailsTitle)" :showFooter="false" :full-width="false" @close="close" @cancel="handleCancel" @submit="handleSave">
+            <MyModal :is-visible="isOpen" :title="modalTitle || $t(config.detailsTitle)" :showFooter="false" :full-width="false" @close="close" @cancel="handleCancel" @submit="handleSave">
                 <Form v-model="item" :initial-tab="initialTab" :readonly="readonly" :is-popup="true" @cancel="handleCancel" @save="handleSave" @remove="handleRemove" />
             </MyModal>
         </Teleport>

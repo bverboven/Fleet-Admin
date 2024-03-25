@@ -199,6 +199,16 @@
         "nl": "Beheerder",
         "fr": "Admin"
     },
+    "modal.cancel": {
+        "en": "Cancel",
+        "nl": "Toch niet",
+        "fr": "Annuler"
+    },
+    "modal.confirm": {
+        "en": "Confirm",
+        "nl": "Bevestig",
+        "fr": "Confirmer"
+    },
     "overview.noResults": {
         "en": "No items",
         "nl": "Geen resultaten",

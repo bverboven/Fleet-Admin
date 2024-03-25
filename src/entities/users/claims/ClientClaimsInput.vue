@@ -1,5 +1,5 @@
 <template>
-    <div class="col mb-2" :class="{ 'is-deleted': allClientClaimsRemoved(client?.id) }">
+    <div class="col mb-2">
         <div class="form-check form-check-inline">
             <label class="form-check-label">
                 <input
@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue"
+import { ref } from "vue"
 import { useVModelField } from "@/regira_modules/vue/vue-helper"
 import Permissions from "@/infrastructure/permissions"
 import type { IClientClaim } from "../data/Entity"
@@ -60,7 +60,6 @@ const props = defineProps<{
 const items = useVModelField<Array<IClientClaim>>(props, emit)
 const client = ref(props.client)
 
-const allClientClaimsRemoved = computed(() => (clientId?: string) => clientId && !items.value?.some((c) => c.clientId == clientId && !c._deleted))
 function hasClientClaim(claimValue: string, clientId?: string) {
     return items.value?.some((c) => c.clientId == clientId && c.claimType == "permissions" && c.claimValue == claimValue && !c._deleted)
 }

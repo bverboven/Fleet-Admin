@@ -35,12 +35,12 @@
                                     <div class="d-flex justify-content-between w-100">
                                         <slot name="footer-close-button" :handleCancel="handleCancel">
                                             <div>
-                                                <IconButton icon="cancel" class="btn-outline-secondary" @click="handleCancel">{{ $t("cancel") }}</IconButton>
+                                                <IconButton icon="cancel" class="btn-outline-secondary" @click="handleCancel">{{ $t("modal.cancel") }}</IconButton>
                                             </div>
                                         </slot>
                                         <slot name="footer-submit-button" :handleClose="handleSubmit">
                                             <div>
-                                                <IconButton icon="submit" :class="isDanger ? 'btn-danger' : 'btn-success'" @click="handleSubmit">{{ $t("confirm") }}</IconButton>
+                                                <IconButton icon="submit" :class="isDanger ? 'btn-danger' : 'btn-success'" @click="handleSubmit">{{ $t("modal.confirm") }}</IconButton>
                                             </div>
                                         </slot>
                                     </div>
