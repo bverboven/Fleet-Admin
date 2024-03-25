@@ -19,7 +19,7 @@ import useEntityStore from "../data/store"
 
 const emit = defineEmits<{
     (e: "update:modelValue", args?: Entity): void
-    (e: "update:idValue", args?: number): void
+    (e: "update:idValue", args?: string): void
     (e: "select", args?: Entity): void
 }>()
 const props = withDefaults(
@@ -55,7 +55,7 @@ defineExpose({
 })
 
 const entityService = get<IEntityService<Entity>>(Entity.name)!
-const search = (q: string) => entityService.list({ ...props.filterDefaults, title: (q?.split(" ") || []).map((x) => `*${x}*`).join(" "), pageSize: props.maxResults })
+const search = (q: string) => entityService.list({ ...props.filterDefaults, q, pageSize: props.maxResults })
 const idSelector = (item?: Entity) => item?.$id?.toString()
 const displayItemFormatter = (item?: Entity) => item?.$title as string
 </script>

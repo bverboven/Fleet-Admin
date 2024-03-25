@@ -5,6 +5,7 @@ export class Client extends EntityBase {
     guid!: string
     code?: string
     title!: string
+    defaultCulture?: string
     description?: string
     created?: Date
     lastModified?: Date

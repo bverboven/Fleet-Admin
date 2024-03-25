@@ -13,6 +13,13 @@
         "fr": "Regira gestionnaire de flotte",
         "nl": "Regira Vloot Admin"
     },
+    "cultures": {
+        "nl-BE": "nl",
+        "fr-BE": "fr",
+        "de-DE": "de",
+        "en-UK": "en",
+        "es-ES": "es"
+    },
 
     "entities": ["clients", "users"],
     "dashboard": ["clients", "users"],

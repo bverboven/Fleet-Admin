@@ -249,6 +249,11 @@
         "nl": "Cultuur",
         "fr": "Culture"
     },
+    "defaultCulture": {
+        "en": "Default culture",
+        "nl": "Standaard taal",
+        "fr": "Langue préférée"
+    },
     "name": {
         "en": "Name",
         "nl": "Naam",
