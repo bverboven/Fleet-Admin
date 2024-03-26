@@ -254,6 +254,11 @@
         "nl": "Standaard taal",
         "fr": "Langue préférée"
     },
+    "language": {
+        "en": "Language",
+        "nl": "Taal",
+        "fr": "Langue"
+    },
     "name": {
         "en": "Name",
         "nl": "Naam",

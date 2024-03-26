@@ -14,11 +14,9 @@
         "nl": "Regira Vloot Admin"
     },
     "cultures": {
-        "nl-BE": "nl",
-        "fr-BE": "fr",
-        "de-DE": "de",
         "en-UK": "en",
-        "es-ES": "es"
+        "fr-BE": "fr",
+        "nl-BE": "nl"
     },
 
     "entities": ["clients", "users"],

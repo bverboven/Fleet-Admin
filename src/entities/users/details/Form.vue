@@ -51,6 +51,18 @@
                             </div>
                             <FormLabel :label="$t('lastName')" />
                         </div>
+                        <div class="col-md-2 mb-2">
+                            <div class="input-group">
+                                <div class="input-group-text"><Icon name="language" /></div>
+                                <select v-model="item.culture" class="form-select">
+                                    <option value=""></option>
+                                    <option v-for="(lang, culture) in cultures" :key="culture" :value="culture">
+                                        {{ lang }}
+                                    </option>
+                                </select>
+                            </div>
+                            <FormLabel :label="$t('language')" />
+                        </div>
                     </div>
                 </FormSection>
 
@@ -66,7 +78,7 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-sm">
-                            <ClientInput :modelValue="newClient" @select="handleAddClient" ref="newClientEl" />
+                            <ClientInput :modelValue="newClient" :filter-defaults="{ exclude: item.clients?.map((x) => x.id) }" @select="handleAddClient" ref="newClientEl" />
                         </div>
                         <div class="col">
                             <ClientClaimsInput v-model="item.clientClaims!" :client="newClient" />
@@ -93,6 +105,7 @@ import type { RouteRecordRaw } from "vue-router"
 import { Feedback } from "@/regira_modules/vue/ui"
 import { FormButtonsRow } from "@/components/input"
 import { useForm, type FormEmits, formDefaults } from "@/regira_modules/vue/entities"
+import { useConfig } from "@/app-config"
 import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"
@@ -116,6 +129,8 @@ const props = withDefaults(
 const { service: entityService } = useEntityStore()
 
 const { item, feedback, handleCancel, handleSubmit, handleRemove, handleRestore } = useForm<Entity>({ entityService, props, emit })
+
+const { cultures } = useConfig()
 
 const newClientEl = ref<any>(null)
 const newClient = ref<Client>()
