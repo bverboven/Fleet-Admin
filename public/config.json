@@ -2,8 +2,8 @@
     "loginUrl": "auth/?clientApp=fleet-admin",
     "api": {
         "development": "https://localhost:7215/",
-        "_development": "https://fleet.regira.com/admin/api",
-        "production": "https://fleet.regira.com/admin/api"
+        "_development": "https://fleet-demo.regira.com/admin-api",
+        "production": "https://fleet.regira.com/admin-api"
     },
     "includeCredentials": false,
     "isDebug": true,

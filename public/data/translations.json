@@ -134,6 +134,11 @@
         "nl": "Beheer gebruikers",
         "fr": "Gérer les utilisateurs"
     },
+    "fleetAdmin": {
+        "en": "Fleet Admin",
+        "nl": "Vloot Administratie",
+        "fr": "Administrateur de Flotte"
+    },
     "fleetManager": {
         "en": "Fleet Manager",
         "nl": "Vlootmanager",
@@ -278,6 +283,11 @@
         "en": "(New) password",
         "nl": "(Nieuw) wachtwoord",
         "fr": "(Nouveau) mot de passe"
+    },
+    "submit": {
+        "en": "Submit",
+        "nl": "Verzenden",
+        "fr": "Envoyer"
     },
     "usernameLabel": {
         "en": "Username/Email",

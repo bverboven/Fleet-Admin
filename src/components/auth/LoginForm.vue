@@ -51,10 +51,13 @@ const props: ILoginProps = defineProps<{
 
 const { username, password, signingIn, failed, isLockedOut, handleSubmit, handleForgotPassword } = useLoginForm(props, emit)
 
-username.value = "admin"
-password.value = "admin"
+const { isDemo } = useConfig()
 
-const appConfig = useConfig()
-const minHeight = computed(() => (appConfig.isDemo && showUsersList.value ? "22rem" : "10rem"))
+if (isDemo) {
+    username.value = "admin"
+    password.value = "admin"
+}
+
+const minHeight = computed(() => (isDemo && showUsersList.value ? "22rem" : "10rem"))
 const showUsersList = ref(false)
 </script>

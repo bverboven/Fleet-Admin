@@ -16,7 +16,7 @@ const config: IConfig = {
     overviewTitle: "entities.users",
     detailsTitle: "entities.user",
     description: "entities.usersDescription",
-    icon: "bi bi-building-fill-gear",
+    icon: "bi bi-people",
 
     defaultPageSize: 10,
 

@@ -26,7 +26,7 @@
     </section>
 
     <Teleport to="#modals">
-        <MyModal :is-visible="showChangePassword" :title="t('changePassword')" :show-footer="false" @close="showChangePassword = false" @cancel="showChangePassword = false">
+        <MyModal :is-visible="showChangePassword" :title="$t('auth.changePassword')" :show-footer="false" @close="showChangePassword = false" @cancel="showChangePassword = false">
             <ChangePasswordForm :username="$auth.authData.name" />
         </MyModal>
     </Teleport>

@@ -1,9 +1,9 @@
 <template>
     <nav class="navbar navbar-expand-sm bg-body-tertiary" v-click-outside="handleCloseMenu">
-        <router-link class="navbar-brand" :to="{ name: 'home' }" :title="`${$t('fleetManager')} v${version}`">
+        <router-link class="navbar-brand" :to="{ name: 'home' }" :title="`${$t('fleetAdmin')} v${version}`">
             <img :src="logo" style="height: 2rem; vertical-align: top" class="me-1" />
             <span class="d-sm-none d-md-inline">
-                {{ $t("fleetManager") }}
+                {{ $t("fleetAdmin") }}
             </span>
         </router-link>
         <button class="navbar-toggler" type="button" @click.stop="showNavbarContent = !showNavbarContent">
@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse bg-light px-2 px-md-0 pt-2 pt-sm-0" :class="{ show: showNavbarContent }">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item py-2 py-sm-0 d-none">
-                    <router-link class="nav-link" aria-current="page" :to="{ name: 'home' }" :title="`${$t('fleetManager')} v${version}`">{{ $t("fleetManager") }}</router-link>
+                    <router-link class="nav-link" aria-current="page" :to="{ name: 'home' }" :title="`${$t('fleetAdmin')} v${version}`">{{ $t("fleetAdmin") }}</router-link>
                 </li>
                 <li v-for="navItem in navbarItems" :key="navItem.id" class="nav-item py-2 py-sm-0">
                     <RouterLink :to="{ name: navItem.id + 'Overview', query: navItem.initialQuery || {} }" class="nav-link" @click="handleCloseMenu">
