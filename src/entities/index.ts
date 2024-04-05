@@ -1,12 +1,11 @@
 import type { App } from "vue"
 import type { RouteRecordRaw } from "vue-router"
 
-import { plugin as countryPlugin } from "./countries"
 import { plugin as clientPlugin } from "./clients"
 import { plugin as clientUserPlugin } from "./users"
 
 // order is important -> cf HomeView
-export const plugins = [countryPlugin, clientPlugin, clientUserPlugin]
+export const plugins = [clientPlugin, clientUserPlugin]
 
 export default {
     install(app: App<Element>, { routes }: { routes: Array<RouteRecordRaw> }) {
