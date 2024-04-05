@@ -10,7 +10,7 @@ import { plugin as isOnlinePlugin } from "@/regira_modules/vue/online"
 import { plugin as debugPlugin } from "@/regira_modules/vue/debug"
 import { preloaderPlugin } from "@/regira_modules/vue/entities"
 import { initAxios } from "@/regira_modules/vue/http"
-import { plugin as authPlugin, CookieTokenManager } from "@/regira_modules/vue/auth"
+import { plugin as authPlugin, CookieTokenManager, LocalStorageTokenManager } from "@/regira_modules/vue/auth"
 import { plugin as servicesPlugin, type IServiceProvider } from "@/regira_modules/vue/ioc"
 import { formatDateTime } from "@/regira_modules/vue/formatters"
 import { defaultPoolCache, PoolCache } from "@/regira_modules/vue/entities"
@@ -110,7 +110,7 @@ fetch(`${appConfig.baseUrl}/config.json?v=${formatDateTime(new Date(), "yyyyMMdd
             enabled: true,
             clientApp: processedConfig.clientApp,
             loginUrl: processedConfig.loginUrl,
-            tokenManager: new CookieTokenManager(),
+            tokenManager: new LocalStorageTokenManager(),
             axios,
             onAuthenticationChange: async (auth) => {
                 if (auth.isAuthenticated) {

@@ -7,6 +7,7 @@
     },
     "includeCredentials": false,
     "isDebug": true,
+    "isDemo": true,
 
     "title": {
         "en": "Regira Fleet Admin",
