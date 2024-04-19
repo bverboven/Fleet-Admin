@@ -110,6 +110,8 @@ const { cultures } = useConfig()
 // Tabs
 const { translate } = useLang()
 const tabs = computed(() =>
-    [Tab.create("form", { icon: "form", title: translate("form"), isDefault: true }), Tab.create("users", { icon: "people", title: translate("entities.users") })].filter((x) => x)
+    [Tab.create("form", { icon: "form", title: translate("form"), isDefault: true }), Tab.create("users", { icon: "people", title: translate("entities.users"), isDisabled: !item.value?.id })].filter(
+        (x) => x
+    )
 )
 </script>

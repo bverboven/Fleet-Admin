@@ -16,7 +16,7 @@
             <div class="row pb-2 border-bottom border-bottom-1">
                 <div class="col-auto fw-bold"><Icon name="edit" class="m-1" /></div>
                 <div class="col fw-bold">{{ $t("name") }}</div>
-                <div class="col fw-bold">{{ $t("culture") }}</div>
+                <div class="col-2 col-lg-1 fw-bold">{{ $t("culture") }}</div>
             </div>
             <div v-for="item in items" :key="item.id" class="row border-bottom border-bottom-1 py-2">
                 <div class="col-auto">
