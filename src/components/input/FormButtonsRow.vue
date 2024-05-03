@@ -79,7 +79,6 @@ const showLabels = computed(() => {
     do {
         formEl = formEl.parentElement
     } while (formEl.nodeName != "FORM" && formEl?.parentElement)
-    console.debug("showLabels", { containerEl })
     return !formEl || formEl.clientWidth > 476
 })
 </script>

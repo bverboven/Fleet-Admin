@@ -19,11 +19,35 @@
             </div>
         </div>
         <div class="row">
+            <!-- client -->
+            <div class="col mb-2">
+                <ClientSelector v-model="client" v-model:idValue="searchObject.clientId as number" :placeholder="$t('entities.client')" @select="handleUpdate">
+                    <template #prepend>
+                        <div class="input-group-text"><Icon :name="Client.name" /></div>
+                    </template>
+                </ClientSelector>
+            </div>
+        </div>
+        <div class="row">
             <!-- title -->
             <div class="col mb-2">
                 <div class="input-group">
                     <div class="input-group-text"><Icon name="title" /></div>
-                    <input v-model.lazy.trim="searchObject.title" class="form-control" placeholder="title" />
+                    <input v-model.lazy.trim="searchObject.title" class="form-control" :placeholder="$t('name')" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- culture -->
+            <div class="col mb-2">
+                <div class="input-group">
+                    <div class="input-group-text"><Icon name="language" /></div>
+                    <select v-model="searchObject.culture" class="form-select">
+                        <option :value="undefined"></option>
+                        <option v-for="(lang, culture) in cultures" :key="culture" :value="culture">
+                            {{ lang }}
+                        </option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -31,8 +55,11 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue"
 import { useVModelField } from "@/regira_modules/vue/vue-helper"
 import { useFilter, type FilterEmits } from "@/regira_modules/vue/entities"
+import { useConfig } from "@/app-config"
+import { Entity as Client, InputSelector as ClientSelector } from "../../clients"
 import SearchObject from "./SearchObject"
 
 interface Emits extends /* @vue-ignore */ FilterEmits {}
@@ -43,7 +70,10 @@ const props = defineProps<{
     resultCount?: number | null
 }>()
 
-const searchObject = useVModelField<SearchObject>(props, emit)
+const { cultures } = useConfig()
 
-const { filterIsActive, handleReset } = useFilter({ searchObject, emit, Constructor: SearchObject })
+const searchObject = useVModelField<SearchObject>(props, emit)
+const client = ref<Client>()
+
+const { filterIsActive, handleReset, handleUpdate } = useFilter({ searchObject, emit, Constructor: SearchObject })
 </script>

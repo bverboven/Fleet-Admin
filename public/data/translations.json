@@ -274,6 +274,11 @@
         "nl": "Formulier",
         "fr": "Formulaire"
     },
+    "keywords": {
+        "en": "Keyword(s)",
+        "nl": "Zoekwoord(en)",
+        "fr": "Mots clés"
+    },
     "permissions": {
         "en": "Permissions",
         "nl": "Rechten",

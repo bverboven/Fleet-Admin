@@ -5,11 +5,18 @@
                 <Icon :name="Entity.name" />
             </router-link>
         </div>
-        <div class="col-2 col-lg-1 text-truncate">
+        <div class="d-none d-sm-block col-2 col-lg-1 text-truncate">
             {{ item.code }}
         </div>
         <div class="col text-truncate">
             {{ item.$title }}
+            <div class="d-sm-none italic-muted">
+                {{ item.code }}
+                <template v-if="item.defaultCulture"> ({{ item.defaultCulture }}) </template>
+            </div>
+        </div>
+        <div class="d-none d-sm-block col-2 col-lg-1 text-truncate">
+            {{ item.defaultCulture }}
         </div>
         <div v-if="!readonly" class="col-auto d-none d-md-block">
             <ConfirmButton icon="delete" class="m-0 p-1" :modal-type="ModalType.danger" @confirm="$emit('request-remove', item)">{{ $t("deleteItem", { title: item?.$title }) }}</ConfirmButton>

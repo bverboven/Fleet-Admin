@@ -5,7 +5,7 @@
         </slot>
 
         <Teleport to="#modals">
-            <MyModal :is-visible="showAdv" :title="props.modalTitle || 'Advanced search'" :show-footer="true" :full-width="true" @close="handleClose" @submit="handleSubmit">
+            <MyModal :is-visible="showAdv" :title="props.modalTitle || 'Advanced search'" :show-footer="true" :full-width="false" @close="handleClose" @submit="handleSubmit">
                 <slot name="title"></slot>
                 <slot name="adv" :handleUpdate="handleUpdate" :handleSubmit="handleSubmit" :handleClose="handleClose"></slot>
 

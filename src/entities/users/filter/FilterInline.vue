@@ -28,7 +28,7 @@ const props = withDefaults(
     }>(),
     {
         modelValue: () => new SearchObject(),
-        showToggleAdv: false,
+        showToggleAdv: true,
     }
 )
 const searchObject = useVModelField<SearchObject>(props, emit)

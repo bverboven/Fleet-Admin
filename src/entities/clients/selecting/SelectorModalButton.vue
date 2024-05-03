@@ -3,7 +3,7 @@
         <slot><Icon name="search" /></slot>
         <Teleport to="#modals">
             <MyModal :is-visible="isOpen" :title="modalTitle || $t(config.overviewTitle)" :showFooter="true" :full-width="true" @close="close" @cancel="handleCancel" @submit="handleSubmit">
-                <SelectorSearch v-model="selected" :filter-defaults="filterDefaults" :item-defaults="itemDefaults" :page-size="maxResults" />
+                <SelectorSearch v-model="selected" class="pt-2" :filter-defaults="filterDefaults" :item-defaults="itemDefaults" :page-size="maxResults" />
             </MyModal>
         </Teleport>
     </button>
