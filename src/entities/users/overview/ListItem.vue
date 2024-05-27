@@ -8,6 +8,9 @@
         <div class="col text-truncate">
             {{ item.$title }}
         </div>
+        <div class="col d-none d-lg-block text-truncate">
+            {{ item.userName }}
+        </div>
         <div class="col-2 col-lg-1 text-truncate">
             {{ item.culture }}
         </div>
