@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between">
                 <h3 class="p-2 mb-2">{{ $t("entities.users") }}</h3>
                 <UserButton
-                    :item-defaults="{ clients: [owner], culture: owner.defaultCulture, clientClaims: [{ clientId: owner.id, claimType: 'permissions', claimValue: Permissions.CAN_READ }] }"
+                    :item-defaults="{ tenants: [owner], culture: owner.defaultCulture, tenantClaims: [{ tenantId: owner.id, claimType: 'permissions', claimValue: Permissions.CAN_READ }] }"
                     class="btn btn-info py-1 my-1"
                     @save="load"
                 >
@@ -56,7 +56,7 @@ const isLoading = ref(false)
 async function load() {
     try {
         isLoading.value = true
-        items.value = await service.list({ clientId: props.owner.id })
+        items.value = await service.list({ tenantId: props.owner.id })
     } finally {
         isLoading.value = false
     }

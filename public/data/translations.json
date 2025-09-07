@@ -104,20 +104,20 @@
         "nl": "Filters actief",
         "fr": "Filtres appliqués"
     },
-    "entities.client": {
-        "en": "Client",
+    "entities.tenant": {
+        "en": "Tenant",
         "nl": "Klant",
-        "fr": "Client"
+        "fr": "Locataire"
     },
-    "entities.clients": {
-        "en": "Clients",
+    "entities.tenants": {
+        "en": "Tenants",
         "nl": "Klanten",
-        "fr": "Clients"
+        "fr": "Locataires"
     },
-    "entities.clientsDescription": {
-        "en": "Manage clients",
+    "entities.tenantsDescription": {
+        "en": "Manage tenants",
         "nl": "Beheer klanten",
-        "fr": "Gérer les clients"
+        "fr": "Gérer les locataires"
     },
     "entities.user": {
         "en": "User",

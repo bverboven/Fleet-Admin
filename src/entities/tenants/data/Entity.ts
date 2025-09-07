@@ -1,6 +1,6 @@
 import { EntityBase } from "@/regira_modules/vue/entities"
 
-export class Client extends EntityBase {
+export class Tenant extends EntityBase {
     id?: string
     guid!: string
     code?: string
@@ -18,6 +18,6 @@ export class Client extends EntityBase {
     }
 }
 
-export const Entity = Client
+export const Entity = Tenant
 
-export default Client
+export default Tenant

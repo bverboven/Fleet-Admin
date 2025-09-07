@@ -67,21 +67,21 @@
                 </FormSection>
 
                 <FormSection :title="$t('permissions')">
-                    <div v-for="client in item.clients" :key="client.id!" class="row mb-2" :class="{ 'is-deleted': isClientDeleted(client) }">
-                        <div class="col-sm"><ClientButton :modelValue="client" class="me-1" /> {{ client.title }}</div>
+                    <div v-for="tenant in item.tenants" :key="tenant.id!" class="row mb-2" :class="{ 'is-deleted': isTenantDeleted(tenant) }">
+                        <div class="col-sm"><TenantButton :modelValue="tenant" class="me-1" /> {{ tenant.title }}</div>
                         <div class="col">
-                            <ClientClaimsInput v-model="item.clientClaims!" :client="client" />
+                            <TenantClaimsInput v-model="item.tenantClaims!" :tenant="tenant" />
                         </div>
                         <div class="col-auto">
-                            <IconButton icon="delete" @click="handleRemoveClient(client)" />
+                            <IconButton icon="delete" @click="handleRemoveTenant(tenant)" />
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col-sm">
-                            <ClientInput :modelValue="newClient" :filter-defaults="{ exclude: item.clients?.map((x) => x.id) }" @select="handleAddClient" ref="newClientEl" />
+                            <TenantInput :modelValue="newTenant" :filter-defaults="{ exclude: item.tenants?.map((x) => x.id) }" @select="handleAddTenant" ref="newTenantEl" />
                         </div>
                         <div class="col">
-                            <ClientClaimsInput v-model="item.clientClaims!" :client="newClient" />
+                            <TenantClaimsInput v-model="item.tenantClaims!" :tenant="newTenant" />
                         </div>
                         <div class="col-auto">
                             <IconButton icon="new" disabled class="border-0" />
@@ -109,8 +109,8 @@ import { useConfig } from "@/app-config"
 import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"
-import ClientClaimsInput from "../claims/ClientClaimsInput.vue"
-import { type Entity as Client, InputSelector as ClientInput, FormModalButton as ClientButton } from "../../clients"
+import TenantClaimsInput from "../claims/TenantClaimsInput.vue"
+import { type Entity as Tenant, InputSelector as TenantInput, FormModalButton as TenantButton } from "../../tenants"
 import Permissions from "@/infrastructure/permissions"
 
 interface Emits extends /* @vue-ignore */ FormEmits<Entity> {}
@@ -132,21 +132,21 @@ const { item, feedback, handleCancel, handleSubmit, handleRemove, handleRestore 
 
 const { cultures } = useConfig()
 
-const newClientEl = ref<any>(null)
-const newClient = ref<Client>()
+const newTenantEl = ref<any>(null)
+const newTenant = ref<Tenant>()
 
-function isClientDeleted(client: Client) {
-    return !item.value.clientClaims?.some((c) => c.clientId == client.id && !c._deleted)
+function isTenantDeleted(tenant: Tenant) {
+    return !item.value.tenantClaims?.some((c) => c.tenantId == tenant.id && !c._deleted)
 }
-function handleAddClient(client?: Client) {
-    if (client == null || item.value.clients?.some((c) => c.id == client?.id)) {
+function handleAddTenant(tenant?: Tenant) {
+    if (tenant == null || item.value.tenants?.some((c) => c.id == tenant?.id)) {
         return
     }
-    item.value.clientClaims?.push({ clientId: client.id!, claimType: "permissions", claimValue: Permissions.CAN_READ })
-    item.value.clients?.push(client)
-    newClientEl.value.resetQ()
+    item.value.tenantClaims?.push({ tenantId: tenant.id!, claimType: "permissions", claimValue: Permissions.CAN_READ })
+    item.value.tenants?.push(tenant)
+    newTenantEl.value.resetQ()
 }
-function handleRemoveClient(client: Client) {
-    item.value.clientClaims = item.value.clientClaims?.map((c) => ({ ...c, _deleted: c._deleted || c.clientId == client.id }))
+function handleRemoveTenant(tenant: Tenant) {
+    item.value.tenantClaims = item.value.tenantClaims?.map((c) => ({ ...c, _deleted: c._deleted || c.tenantId == tenant.id }))
 }
 </script>

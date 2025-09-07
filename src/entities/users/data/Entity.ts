@@ -1,5 +1,5 @@
 import { EntityBase } from "@/regira_modules/vue/entities"
-import type Client from "@/entities/clients/data/Entity"
+import type Tenant from "@/entities/tenants/data/Entity"
 
 export type IUserClaim = {
     id?: number
@@ -7,15 +7,15 @@ export type IUserClaim = {
     claimValue?: string
     _deleted?: boolean
 }
-export type IClientClaim = {
+export type ITenantClaim = {
     id?: number
-    clientId: string
+    tenantId: string
     claimType: string
     claimValue: string
     _deleted?: boolean
 }
 
-export class ClientUser extends EntityBase {
+export class TenantUser extends EntityBase {
     id!: string
     userName!: string
     email!: string
@@ -28,9 +28,9 @@ export class ClientUser extends EntityBase {
     currentPassword?: string
     newPassword?: string
 
-    clients?: Array<Client> = []
+    tenants?: Array<Tenant> = []
     userClaims?: Array<IUserClaim> = []
-    clientClaims?: Array<IClientClaim> = []
+    tenantClaims?: Array<ITenantClaim> = []
 
     override get $id(): string | number {
         return this.id || "new"
@@ -40,6 +40,6 @@ export class ClientUser extends EntityBase {
     }
 }
 
-export const Entity = ClientUser
+export const Entity = TenantUser
 
-export default ClientUser
+export default TenantUser

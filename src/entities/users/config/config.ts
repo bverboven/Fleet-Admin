@@ -5,7 +5,7 @@ const api = "/users"
 
 const config: IConfig = {
     id: Entity.name,
-    key: "ClientUser",
+    key: "TenantUser",
 
     routePrefix: "users",
     baseQueryParams: {

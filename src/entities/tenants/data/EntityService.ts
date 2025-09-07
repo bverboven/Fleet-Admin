@@ -5,7 +5,7 @@ import Entity from "./Entity"
 export class EntityService extends EntityServiceBase<Entity> {
     constructor(axios: AxiosInstance, config: IConfig) {
         super(axios, config)
-        console.debug("ClientService", this, { config })
+        console.debug("TenantService", this, { config })
     }
 
     override toEntity(item: object): Entity {

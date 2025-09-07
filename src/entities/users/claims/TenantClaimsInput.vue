@@ -5,10 +5,10 @@
                 <input
                     class="form-check-input"
                     type="checkbox"
-                    :disabled="!client?.id"
+                    :disabled="!tenant?.id"
                     :value="Permissions.CAN_READ"
-                    :checked="hasClientClaim(Permissions.CAN_READ, client?.id)"
-                    @click="toggleClientClaim(Permissions.CAN_READ, client?.id!)"
+                    :checked="hasTenantClaim(Permissions.CAN_READ, tenant?.id)"
+                    @click="toggleTenantClaim(Permissions.CAN_READ, tenant?.id!)"
                 />
                 {{ $t("claims.canRead") }}
             </label>
@@ -18,10 +18,10 @@
                 <input
                     class="form-check-input"
                     type="checkbox"
-                    :disabled="!client?.id"
+                    :disabled="!tenant?.id"
                     :value="Permissions.CAN_WRITE"
-                    :checked="hasClientClaim(Permissions.CAN_WRITE, client?.id)"
-                    @click="toggleClientClaim(Permissions.CAN_WRITE, client?.id!)"
+                    :checked="hasTenantClaim(Permissions.CAN_WRITE, tenant?.id)"
+                    @click="toggleTenantClaim(Permissions.CAN_WRITE, tenant?.id!)"
                 />
                 {{ $t("claims.canWrite") }}
             </label>
@@ -31,10 +31,10 @@
                 <input
                     class="form-check-input"
                     type="checkbox"
-                    :disabled="!client?.id"
+                    :disabled="!tenant?.id"
                     :value="Permissions.ADMIN"
-                    :checked="hasClientClaim(Permissions.ADMIN, client?.id)"
-                    @click="toggleClientClaim(Permissions.ADMIN, client?.id!)"
+                    :checked="hasTenantClaim(Permissions.ADMIN, tenant?.id)"
+                    @click="toggleTenantClaim(Permissions.ADMIN, tenant?.id!)"
                 />
                 {{ $t("claims.admin") }}
             </label>
@@ -46,30 +46,30 @@
 import { ref } from "vue"
 import { useVModelField } from "@/regira_modules/vue/vue-helper"
 import Permissions from "@/infrastructure/permissions"
-import type { IClientClaim } from "../data/Entity"
-import { type Entity as Client } from "../../clients"
+import type { ITenantClaim } from "../data/Entity"
+import { type Entity as Tenant } from "../../tenants"
 
 const emit = defineEmits<{
-    (e: "update:modelValue", items: Array<IClientClaim>): void
+    (e: "update:modelValue", items: Array<ITenantClaim>): void
 }>()
 const props = defineProps<{
-    modelValue: Array<IClientClaim>
-    client?: Client
+    modelValue: Array<ITenantClaim>
+    tenant?: Tenant
 }>()
 
-const items = useVModelField<Array<IClientClaim>>(props, emit)
-const client = ref(props.client)
+const items = useVModelField<Array<ITenantClaim>>(props, emit)
+const tenant = ref(props.tenant)
 
-function hasClientClaim(claimValue: string, clientId?: string) {
-    return items.value?.some((c) => c.clientId == clientId && c.claimType == "permissions" && c.claimValue == claimValue && !c._deleted)
+function hasTenantClaim(claimValue: string, tenantId?: string) {
+    return items.value?.some((c) => c.tenantId == tenantId && c.claimType == "permissions" && c.claimValue == claimValue && !c._deleted)
 }
-function toggleClientClaim(claimValue: string, clientId: string) {
+function toggleTenantClaim(claimValue: string, tenantId: string) {
     const claims = items.value ?? []
-    let claim = claims.find((c) => c.clientId == clientId && c.claimType == "permissions" && c.claimValue == claimValue)
+    let claim = claims.find((c) => c.tenantId == tenantId && c.claimType == "permissions" && c.claimValue == claimValue)
     if (claim != null) {
         claim._deleted = !claim._deleted
     } else {
-        claim = { clientId, claimType: "permissions", claimValue }
+        claim = { tenantId, claimType: "permissions", claimValue }
         claims.push(claim)
     }
     emit("update:modelValue", [...claims])

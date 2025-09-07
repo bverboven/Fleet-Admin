@@ -5,12 +5,12 @@ import Entity from "./Entity"
 export class EntityService extends EntityServiceBase<Entity> {
     constructor(axios: AxiosInstance, config: IConfig) {
         super(axios, config)
-        console.debug("ClientUserService", this, { config })
+        console.debug("TenantUserService", this, { config })
     }
 
     protected override prepareItem(item: Entity): Entity {
         item.userClaims = item.userClaims?.filter((x) => !x._deleted)
-        item.clientClaims = item.clientClaims?.filter((x) => !x._deleted)
+        item.tenantClaims = item.tenantClaims?.filter((x) => !x._deleted)
         return item
     }
 

@@ -19,13 +19,13 @@
             </div>
         </div>
         <div class="row">
-            <!-- client -->
+            <!-- tenant -->
             <div class="col mb-2">
-                <ClientSelector v-model="client" v-model:idValue="searchObject.clientId as number" :placeholder="$t('entities.client')" @select="handleUpdate">
+                <TenantSelector v-model="tenant" v-model:idValue="searchObject.tenantId as number" :placeholder="$t('entities.tenant')" @select="handleUpdate">
                     <template #prepend>
-                        <div class="input-group-text"><Icon :name="Client.name" /></div>
+                        <div class="input-group-text"><Icon :name="Tenant.name" /></div>
                     </template>
-                </ClientSelector>
+                </TenantSelector>
             </div>
         </div>
         <div class="row">
@@ -59,7 +59,7 @@ import { ref } from "vue"
 import { useVModelField } from "@/regira_modules/vue/vue-helper"
 import { useFilter, type FilterEmits } from "@/regira_modules/vue/entities"
 import { useConfig } from "@/app-config"
-import { Entity as Client, InputSelector as ClientSelector } from "../../clients"
+import { Entity as Tenant, InputSelector as TenantSelector } from "../../tenants"
 import SearchObject from "./SearchObject"
 
 interface Emits extends /* @vue-ignore */ FilterEmits {}
@@ -73,7 +73,7 @@ const props = defineProps<{
 const { cultures } = useConfig()
 
 const searchObject = useVModelField<SearchObject>(props, emit)
-const client = ref<Client>()
+const tenant = ref<Tenant>()
 
 const { filterIsActive, handleReset, handleUpdate } = useFilter({ searchObject, emit, Constructor: SearchObject })
 </script>

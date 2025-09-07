@@ -20,7 +20,7 @@
         "nl-BE": "nl"
     },
 
-    "entities": ["clients", "users"],
-    "dashboard": ["clients", "users"],
-    "navbar": ["clients", "users"]
+    "entities": ["tenants", "users"],
+    "dashboard": ["tenants", "users"],
+    "navbar": ["tenants", "users"]
 }
