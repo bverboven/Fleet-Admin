@@ -26,6 +26,7 @@ import dateSerializer from "@/regira_modules/extensions/date-extensions"
 dateSerializer.use()
 
 // Assets
+import "@/regira_modules/vue/ui/autocomplete/style.scss"
 import "@/assets/main.scss"
 import loadingImg from "@/assets/images/loading.gif"
 
@@ -124,7 +125,9 @@ fetch(`${appConfig.baseUrl}/config.json?v=${formatDateTime(new Date(), "yyyyMMdd
                     // await preload(preloaderTypes as any)
 
                     // ready
-                    app.config.globalProperties.$setCulture(auth.culture)
+                    if (auth.culture != null) {
+                        app.config.globalProperties.$setCulture(auth.culture)
+                    }
                     app.config.globalProperties.$setAppStatus(AppStatus.Ready)
 
                     setLangCode(auth.culture!.split("-")[0])

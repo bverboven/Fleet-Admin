@@ -2,10 +2,12 @@
     <form @submit.prevent="handleSubmit" :modelValue="item">
         <div class="row form-buttons">
             <div class="col col-md-auto order-1">
-                <FormButtonsRow :item="item" :readonly="readonly" :feedback="feedback" :show-delete="item?.$id != 'new'" @cancel="handleCancel" @remove="handleRemove" @restore="handleRestore" />
+                <FormButtonsRow :item="item" :readonly="readonly" :feedback="feedback" :show-delete="item?.$id != 'new'"
+                    @cancel="handleCancel" @remove="handleRemove" @restore="handleRestore" />
             </div>
             <div class="col-auto order-2 order-md-3">
-                <RouterLink v-if="isPopup" :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }" class="btn btn-default py-1" target="_blank" :title="$t('forms.popOut')">
+                <RouterLink v-if="isPopup" :to="{ name: `${Entity.name}Details`, params: { id: item.$id } }"
+                    class="btn btn-default py-1" target="_blank" :title="$t('forms.popOut')">
                     <Icon name="popOut" />
                 </RouterLink>
                 <RouterLink v-else-if="overviewUrl" :to="overviewUrl" class="btn btn-info py-1">
@@ -19,19 +21,24 @@
 
         <div class="row">
             <div class="col">
-                <FormSection :title="$t(config.detailsTitle)" :readonly="readonly">
+                <FormSection :title="$t(config.detailsTitle ?? config.key)" :readonly="readonly">
                     <div class="row">
                         <div class="col-md mb-2">
                             <div class="input-group">
-                                <div class="input-group-text"><Icon name="email" /></div>
+                                <div class="input-group-text">
+                                    <Icon name="email" />
+                                </div>
                                 <input v-model="item.email" maxlength="256" :readonly="readonly" class="form-control" />
                             </div>
                             <FormLabel :label="$t('usernameLabel')" />
                         </div>
                         <div class="col-md mb-2">
                             <div class="input-group">
-                                <div class="input-group-text"><Icon name="key" /></div>
-                                <input v-model="item.newPassword" maxlength="256" placeholder="********" :readonly="readonly" class="form-control" />
+                                <div class="input-group-text">
+                                    <Icon name="key" />
+                                </div>
+                                <input v-model="item.newPassword" maxlength="256" placeholder="********"
+                                    :readonly="readonly" class="form-control" />
                             </div>
                             <FormLabel :label="$t('passwordLabel')" />
                         </div>
@@ -39,21 +46,29 @@
                     <div class="row">
                         <div class="col-md mb-2">
                             <div class="input-group">
-                                <div class="input-group-text"><Icon name="title" /></div>
-                                <input v-model="item.givenName" maxlength="256" :readonly="readonly" class="form-control" />
+                                <div class="input-group-text">
+                                    <Icon name="title" />
+                                </div>
+                                <input v-model="item.givenName" maxlength="256" :readonly="readonly"
+                                    class="form-control" />
                             </div>
                             <FormLabel :label="$t('givenName')" />
                         </div>
                         <div class="col-md mb-2">
                             <div class="input-group">
-                                <div class="input-group-text"><Icon name="title" /></div>
-                                <input v-model="item.lastName" maxlength="256" :readonly="readonly" class="form-control" />
+                                <div class="input-group-text">
+                                    <Icon name="title" />
+                                </div>
+                                <input v-model="item.lastName" maxlength="256" :readonly="readonly"
+                                    class="form-control" />
                             </div>
                             <FormLabel :label="$t('lastName')" />
                         </div>
                         <div class="col-md-2 mb-2">
                             <div class="input-group">
-                                <div class="input-group-text"><Icon name="language" /></div>
+                                <div class="input-group-text">
+                                    <Icon name="language" />
+                                </div>
                                 <select v-model="item.culture" class="form-select">
                                     <option value=""></option>
                                     <option v-for="(lang, culture) in cultures" :key="culture" :value="culture">
@@ -67,8 +82,11 @@
                 </FormSection>
 
                 <FormSection :title="$t('permissions')">
-                    <div v-for="tenant in item.tenants" :key="tenant.id!" class="row mb-2" :class="{ 'is-deleted': isTenantDeleted(tenant) }">
-                        <div class="col-sm"><TenantButton :modelValue="tenant" class="me-1" /> {{ tenant.title }}</div>
+                    <div v-for="tenant in item.tenants" :key="tenant.id!" class="row mb-2"
+                        :class="{ 'is-deleted': isTenantDeleted(tenant) }">
+                        <div class="col-sm">
+                            <TenantButton :modelValue="tenant" class="me-1" /> {{ tenant.title }}
+                        </div>
                         <div class="col">
                             <TenantClaimsInput v-model="item.tenantClaims!" :tenant="tenant" />
                         </div>
@@ -78,7 +96,9 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col-sm">
-                            <TenantInput :modelValue="newTenant" :filter-defaults="{ exclude: item.tenants?.map((x) => x.id) }" @select="handleAddTenant" ref="newTenantEl" />
+                            <TenantInput :modelValue="newTenant"
+                                :filter-defaults="{ exclude: item.tenants?.map((x) => x.id) }" @select="handleAddTenant"
+                                ref="newTenantEl" />
                         </div>
                         <div class="col">
                             <TenantClaimsInput v-model="item.tenantClaims!" :tenant="newTenant" />
@@ -91,11 +111,9 @@
             </div>
         </div>
 
-        <Debug
-            :modelValue="{
-                item,
-            }"
-        />
+        <Debug :modelValue="{
+            item,
+        }" />
     </form>
 </template>
 
@@ -113,7 +131,7 @@ import TenantClaimsInput from "../claims/TenantClaimsInput.vue"
 import { type Entity as Tenant, InputSelector as TenantInput, FormModalButton as TenantButton } from "../../tenants"
 import Permissions from "@/infrastructure/permissions"
 
-interface Emits extends /* @vue-ignore */ FormEmits<Entity> {}
+interface Emits extends /* @vue-ignore */ FormEmits<Entity> { }
 const emit = defineEmits<Emits>()
 const props = withDefaults(
     defineProps<{

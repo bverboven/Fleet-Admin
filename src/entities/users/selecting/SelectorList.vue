@@ -12,7 +12,7 @@
                     <IconButton :icon="isSelected(item) ? 'selected' : 'select'" class="btn-default py-0 px-1" @click="handleSelect(item)" />
                 </div>
                 <div class="col-2 text-truncate">
-                    {{ item.code }}
+                    {{ item.userName }}
                 </div>
                 <div class="col text-truncate">
                     <FormModalButton :modelValue="items[i]" class="p-1" />

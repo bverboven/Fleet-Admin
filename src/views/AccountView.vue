@@ -4,8 +4,8 @@
 
         <Debug
             :modelValue="{
-                userId: $auth.authData.sub,
-                username: $auth.authData.name,
+                userId: $auth.authData?.userId,
+                username: $auth.authData?.name,
                 auth: $auth,
             }"
         />

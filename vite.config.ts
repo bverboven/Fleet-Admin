@@ -11,10 +11,11 @@ export default defineConfig({
         target: "esnext",
     },
     resolve: {
-        alias: {
-            "@": fileURLToPath(new URL("./src", import.meta.url)),
-        },
-        preserveSymlinks: true,
+        alias: [
+            { find: "@/regira_modules", replacement: fileURLToPath(new URL("./node_modules/regira_modules/dist", import.meta.url)) },
+            { find: "@", replacement: fileURLToPath(new URL("./src", import.meta.url)) },
+        ],
+        preserveSymlinks: true, // legacy
     },
     define: {
         __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
@@ -22,13 +23,5 @@ export default defineConfig({
     esbuild: {
         //drop: ["console", "debugger"],
     },
-    base: "/admin/",
-    server: {
-        fs: {
-            allow: [
-                "D:/Projects/Regira", // added to enable symlink...
-                "C:/Projects/Regira",
-            ],
-        },
-    },
+    base: "/admin/"
 })

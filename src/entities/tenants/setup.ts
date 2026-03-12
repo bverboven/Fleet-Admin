@@ -1,7 +1,7 @@
 import type { AxiosInstance } from "axios"
 import type { App } from "vue"
 import type { RouteRecordRaw } from "vue-router"
-import type { IServiceProvider } from "@/regira_modules/vue"
+import type { IServiceProvider } from "@/regira_modules/vue/ioc"
 import type { IIconProvider } from "@/regira_modules/vue/ui/icons"
 import { DetailsSummary } from "@/regira_modules/vue/entities"
 import Permissions from "@/infrastructure/permissions"

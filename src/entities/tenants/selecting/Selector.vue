@@ -22,11 +22,11 @@ import InputSelector from "./InputSelector.vue"
 
 const emit = defineEmits<{
     (e: "update:modelValue", args: Array<Entity>): void
-    (e: "update:idsValue", args: Array<number>): void
+    (e: "update:idsValue", args: Array<string>): void
 }>()
 const props = defineProps<{
     modelValue?: Array<Entity>
-    idsValue?: Array<number>
+    idsValue?: Array<string>
 }>()
 
 const { fromPool, list } = useEntityStore()

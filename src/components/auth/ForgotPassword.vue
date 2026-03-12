@@ -31,6 +31,7 @@ import { watchEffect } from "vue"
 import { useRouter } from "vue-router"
 import { LoadingContainer, Feedback, useFeedback, FeedbackStatus } from "@/regira_modules/vue/ui"
 import { useForgotPasswordForm, type IForgotPasswordEmits, type IForgotPasswordProps } from "@/regira_modules/vue/auth"
+import { useLang } from "@/regira_modules/vue/lang"
 import { useConfig } from "@/app-config"
 
 interface IEmits extends IForgotPasswordEmits {}
@@ -47,6 +48,7 @@ const resetPasswordRoute = router.resolve({ name: "resetPassword" })
 const siteUrl = `${location.protocol}//${location.host}${config.baseUrl}${resetPasswordRoute.fullPath}`
 
 const { username, isLoading, isFormValid, isSuccess, handleSubmit } = useForgotPasswordForm(props, emit, { siteUrl, siteName: config.title })
+const { translate: tm } = useLang()
 
 const feedback = useFeedback()
 watchEffect(() => {

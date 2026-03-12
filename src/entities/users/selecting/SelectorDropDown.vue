@@ -2,7 +2,7 @@
     <select v-model="selected" class="form-select">
         <option value=""></option>
         <option v-for="item in items" :value="item.id" :key="item.id">
-            {{ item.title }}
+            {{ item.$title }}
         </option>
     </select>
 </template>
@@ -14,11 +14,11 @@ import useEntityStore from "../data/store"
 
 const emit = defineEmits<{
     (e: "update:modelValue", args?: Entity): void
-    (e: "update:idValue", args?: number): void
+    (e: "update:idValue", args?: string): void
 }>()
 const props = defineProps<{
     modelValue?: Entity
-    idValue?: number
+    idValue?: string
 }>()
 
 const selected = computed({

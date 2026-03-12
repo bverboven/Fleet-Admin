@@ -21,7 +21,7 @@
             <div class="col">
                 <TabContainer :tabs="tabs" :active="initialTab" :use-route-nav="!isPopup">
                     <template #form>
-                        <FormSection :title="$t(config.detailsTitle)" :readonly="readonly">
+                        <FormSection :title="$t(config.detailsTitle ?? config.key)" :readonly="readonly">
                             <div class="row">
                                 <div class="col-md mb-2">
                                     <div class="input-group">

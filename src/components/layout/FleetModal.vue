@@ -68,7 +68,7 @@ const emit = defineEmits<{
 const props = withDefaults(
     defineProps<{
         title?: string
-        isVisible?: boolean
+        isVisible: boolean
         showHeader?: boolean
         showFooter?: boolean
         fullWidth?: boolean

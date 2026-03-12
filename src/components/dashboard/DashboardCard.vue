@@ -19,7 +19,7 @@
                     </div>
                     <div class="col">
                         <slot name="desc">
-                            <div class="text-muted mb-0" v-html="$t(item.description)"></div>
+                            <div class="text-muted mb-0" v-html="$t(item.description || '')"></div>
                         </slot>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import type { IDashboardItem } from "./dashboard"
+import type { IDashboardItem } from "."
 
 defineProps<{
     item: IDashboardItem

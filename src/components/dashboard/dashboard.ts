@@ -1,4 +1,4 @@
-import type { IConfig } from "../../../entities"
+import type { IConfig } from "@/regira_modules/vue/entities"
 
 export type IDashboardItem = {
     name: string

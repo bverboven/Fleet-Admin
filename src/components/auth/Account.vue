@@ -5,7 +5,7 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <Icon name="user" class="mx-1 me-2" />
-                        {{ $auth.authData.displayName ?? $auth.authData.name }}
+                        {{ $auth.authData?.displayName ?? $auth.authData?.name }}
                     </li>
                     <li class="list-group-item">
                         <button type="button" class="btn btn-default p-1" @click="showChangePassword = !showChangePassword">
@@ -27,7 +27,7 @@
 
     <Teleport to="#modals">
         <MyModal :is-visible="showChangePassword" :title="$t('auth.changePassword')" :show-footer="false" @close="showChangePassword = false" @cancel="showChangePassword = false">
-            <ChangePasswordForm :username="$auth.authData.name" />
+            <ChangePasswordForm :username="$auth.authData?.name ?? ''" />
         </MyModal>
     </Teleport>
 </template>

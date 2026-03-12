@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import type { IDashboardItem } from "./dashboard"
+import type { IDashboardItem } from "."
 import DashboardCard from "./DashboardCard.vue"
 
 defineProps<{
