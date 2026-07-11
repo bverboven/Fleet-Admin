@@ -29,9 +29,9 @@
 <script setup lang="ts">
 import { watchEffect } from "vue"
 import { useRouter } from "vue-router"
-import { LoadingContainer, Feedback, useFeedback, FeedbackStatus } from "@/regira_modules/vue/ui"
-import { useForgotPasswordForm, type IForgotPasswordEmits, type IForgotPasswordProps } from "@/regira_modules/vue/auth"
-import { useLang } from "@/regira_modules/vue/lang"
+import { LoadingContainer, Feedback, useFeedback, FeedbackStatus } from "regira_modules/vue/ui"
+import { useForgotPasswordForm, type IForgotPasswordEmits, type IForgotPasswordProps } from "regira_modules/vue/auth"
+import { useLang } from "regira_modules/vue/lang"
 import { useConfig } from "@/app-config"
 
 interface IEmits extends IForgotPasswordEmits {}

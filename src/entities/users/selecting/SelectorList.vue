@@ -25,19 +25,14 @@
 
 <script setup lang="ts">
 import { computed } from "vue"
-import type { OverviewEmits } from "@/regira_modules/vue/entities"
+import type { OverviewEmits } from "regira_modules/vue/entities"
 import type Entity from "../data/Entity"
 import useEntityStore from "../data/store"
 import FormModalButton from "../details/FormModalButton.vue"
 
-interface Emits extends /* @vue-ignore */ OverviewEmits<Entity> {
-    (e: "select", selected: Entity | null): void
-}
-const emit = defineEmits<Emits>()
-const props = defineProps<{
-    modelValue?: Array<Entity> | null
-    selected?: Entity | null
-}>()
+interface Emits extends /* @vue-ignore */ OverviewEmits<Entity> {}
+const emit = defineEmits<Emits & { (e: "update:modelValue", value: Array<Entity>): void; (e: "select", selected?: Entity): void }>()
+const props = defineProps<{ modelValue?: Array<Entity>; selected?: Entity }>()
 
 const isSelected = computed(() => (item: Entity) => item.$id == props.selected?.$id)
 const { fromPool } = useEntityStore()
@@ -46,7 +41,7 @@ const items = computed<Array<Entity>>({
     set: (value) => emit("update:modelValue", value),
 })
 
-function handleSelect(item: Entity) {
-    emit("select", item?.$id !== props.selected?.$id ? item : null)
+function handleSelect(item?: Entity) {
+    emit("select", item?.$id !== props.selected?.$id ? item : undefined)
 }
 </script>

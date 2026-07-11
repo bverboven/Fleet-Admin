@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
-import { useAuthStore } from "@/regira_modules/vue/auth"
+import { useAuthStore } from "regira_modules/vue/auth"
 import ChangePasswordForm from "./ChangePasswordForm.vue"
 
 const showChangePassword = ref(false)

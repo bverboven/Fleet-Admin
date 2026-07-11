@@ -22,10 +22,10 @@
         </footer>
 
         <Teleport to="#loginModal">
-            <LoginModal :is-visible="showLogin" :title="$t('auth.signIn')">
+            <LoginModal v-if="showLogin" :title="$t('auth.signIn')">
                 <LoginForm :username="username" class="mt-2" @forgot-password="openForgotPassword" />
             </LoginModal>
-            <ForgotPasswordModal :is-visible="showForgotPassword" @close="showForgotPassword = false">
+            <ForgotPasswordModal v-if="showForgotPassword" @close="showForgotPassword = false">
                 <ForgotPassword :username="username" class="mt-2" @login="openLogin" />
             </ForgotPasswordModal>
         </Teleport>
@@ -34,9 +34,9 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue"
-import { Feedback, LoadingContainer } from "@/regira_modules/vue/ui"
-import { LoginModal, ForgotPasswordModal, useAuthStore } from "@/regira_modules/vue/auth"
-import { AppStatus } from "@/regira_modules/vue/app"
+import { Feedback, LoadingContainer } from "regira_modules/vue/ui"
+import { LoginModal, ForgotPasswordModal, useAuthStore } from "regira_modules/vue/auth"
+import { AppStatus } from "regira_modules/vue/app"
 import Header from "@/components/layout/TheHeader.vue"
 import Footer from "@/components/layout/TheFooter.vue"
 import Main from "@/components/layout/Main.vue"

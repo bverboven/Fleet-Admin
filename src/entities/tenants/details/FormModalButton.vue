@@ -1,8 +1,8 @@
 <template>
     <button type="button" class="btn btn-default" @click="open">
-        <slot><Icon :name="Entity.name" /></slot>
+        <slot><Icon :name="config.key" /></slot>
         <Teleport to="#modals">
-            <MyModal :is-visible="isOpen" :title="modalTitle || $t(config.detailsTitle ?? config.key)" :showFooter="false" :full-width="true" @close="close" @cancel="handleCancel" @submit="handleSave">
+            <MyModal :is-visible="isOpen" :title="modalTitle || $t(config.detailsTitle ?? config.key)" :showFooter="false" :full-width="fullWidth" @close="close" @cancel="handleCancel" @submit="handleSave">
                 <Form v-model="item" :initial-tab="initialTab" :readonly="readonly" :is-popup="true" @cancel="handleCancel" @save="handleSave" @remove="handleRemove" />
             </MyModal>
         </Teleport>
@@ -11,29 +11,44 @@
 
 <script setup lang="ts">
 import { computed, type Ref } from "vue"
-import { useVModelField } from "@/regira_modules/vue/vue-helper"
-import { useModal, type FormModalEmits } from "@/regira_modules/vue/entities"
+import { FormStates, useModal, type FormModalEmits, type SaveResult } from "regira_modules/vue/entities"
 import config from "../config/config"
 import Entity from "../data/Entity"
 import useEntityStore from "../data/store"
 import Form from "./Form.vue"
 
 interface Emits extends /* @vue-ignore */ FormModalEmits<Entity> {}
+const emit = defineEmits<
+    Emits & {
+        "update:modelValue": (item?: Entity) => true
+        save: (result: SaveResult<Entity>) => true
+        remove: (item: Entity) => true
+        restore: (item: Entity) => true
+        cancel: (arg: { canceled: Entity; original?: Entity }) => true
+        changeState: (state: FormStates) => true
+        open: (item: Entity, update: (newItem: Entity) => void) => true
+        close: (item?: Entity) => true
+    }
+>()
 
-const emit = defineEmits<Emits>()
-const props = defineProps<{
-    modelValue?: Entity
-    readonly?: boolean
-    itemDefaults?: Ref<Record<string, any>> | Record<string, any>
-    initialTab?: string
-    label?: string
-    closeOnSave?: boolean
-}>()
+const props = withDefaults(
+    defineProps<{
+        readonly?: boolean
+        itemDefaults?: Ref<Record<string, any>> | Record<string, any>
+        initialTab?: string
+        label?: string
+        closeOnSave?: boolean
+        fullWidth?: boolean
+    }>(),
+    {
+        fullWidth: config.isComplex,
+    }
+)
 
-const modelRef = useVModelField<Entity>(props, emit)
+const modelRef = defineModel<Entity>()
 const { service: entityService } = useEntityStore()
 
-const modalTitle = computed(() => props.label || entityService.toEntity(modelRef.value).$title)
+const modalTitle = computed(() => props.label || (modelRef.value != null && entityService.toEntity(modelRef.value).$title))
 const {
     item,
     isOpen,

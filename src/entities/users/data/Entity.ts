@@ -1,4 +1,4 @@
-import { EntityBase } from "@/regira_modules/vue/entities"
+import { EntityBase } from "regira_modules/vue/entities"
 import type Tenant from "@/entities/tenants/data/Entity"
 
 export type IUserClaim = {

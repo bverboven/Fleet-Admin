@@ -56,23 +56,27 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
-import { useVModelField } from "@/regira_modules/vue/vue-helper"
-import { useFilter, type FilterEmits } from "@/regira_modules/vue/entities"
+import { useFilter, type FilterEmits } from "regira_modules/vue/entities"
 import { useConfig } from "@/app-config"
 import { Entity as Tenant, InputSelector as TenantSelector } from "../../tenants"
 import SearchObject from "./SearchObject"
 
-interface Emits extends /* @vue-ignore */ FilterEmits {}
+interface Emits extends /* @vue-ignore */ FilterEmits<SearchObject> {}
+const emit = defineEmits<
+    Emits & {
+        "update:modelValue": (value: SearchObject) => true
+        filter: (value: SearchObject) => true
+        close: () => void
+    }
+>()
 
-const emit = defineEmits<Emits>()
 const props = defineProps<{
-    modelValue: SearchObject
-    resultCount?: number | null
+    resultCount?: number
 }>()
 
 const { cultures } = useConfig()
 
-const searchObject = useVModelField<SearchObject>(props, emit)
+const searchObject = defineModel<SearchObject>({ required: true })
 const tenant = ref<Tenant>()
 
 const { filterIsActive, handleReset, handleUpdate } = useFilter({ searchObject, emit, Constructor: SearchObject })

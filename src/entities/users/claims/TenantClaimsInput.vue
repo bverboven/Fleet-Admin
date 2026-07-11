@@ -44,20 +44,15 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
-import { useVModelField } from "@/regira_modules/vue/vue-helper"
 import Permissions from "@/infrastructure/permissions"
 import type { ITenantClaim } from "../data/Entity"
 import { type Entity as Tenant } from "../../tenants"
 
-const emit = defineEmits<{
-    (e: "update:modelValue", items: Array<ITenantClaim>): void
-}>()
 const props = defineProps<{
-    modelValue: Array<ITenantClaim>
     tenant?: Tenant
 }>()
 
-const items = useVModelField<Array<ITenantClaim>>(props, emit)
+const items = defineModel<Array<ITenantClaim>>({ required: true })
 const tenant = ref(props.tenant)
 
 function hasTenantClaim(claimValue: string, tenantId?: string) {
@@ -72,6 +67,6 @@ function toggleTenantClaim(claimValue: string, tenantId: string) {
         claim = { tenantId, claimType: "permissions", claimValue }
         claims.push(claim)
     }
-    emit("update:modelValue", [...claims])
+    items.value = [...claims]
 }
 </script>

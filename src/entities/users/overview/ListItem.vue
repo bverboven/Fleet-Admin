@@ -1,8 +1,8 @@
 <template>
     <div class="row border-bottom border-bottom-1 py-2">
         <div class="col-auto">
-            <router-link :to="{ name: Entity.name + 'Details', params: { id: item.$id } }" class="btn btn-link p-1">
-                <Icon :name="Entity.name" />
+            <router-link :to="{ name: config.key + 'Details', params: { id: item.$id } }" class="btn btn-link p-1">
+                <Icon :name="config.key" />
             </router-link>
         </div>
         <div class="col text-truncate">
@@ -21,10 +21,10 @@
 </template>
 
 <script setup lang="ts">
-import { useVModelField } from "@/regira_modules/vue/vue-helper"
-import { ModalType, ConfirmButton } from "@/regira_modules/vue/ui"
-import type { SaveResult } from "@/regira_modules/vue/entities"
+import { ModalType, ConfirmButton } from "regira_modules/vue/ui"
+import type { SaveResult } from "regira_modules/vue/entities"
 import Entity from "../data/Entity"
+import config from "../config/config"
 
 const emit = defineEmits<{
     (e: "update:modelValue", args: Entity): void
@@ -34,9 +34,8 @@ const emit = defineEmits<{
     (e: "request-remove", args: Entity): void
 }>()
 const props = defineProps<{
-    modelValue: Entity
     readonly?: boolean
 }>()
 
-const item = useVModelField<Entity>(props, emit)
+const item = defineModel<Entity>({ required: true })
 </script>

@@ -20,7 +20,17 @@
         "nl-BE": "nl"
     },
 
-    "entities": ["tenants", "users"],
-    "dashboard": ["tenants", "users"],
-    "navbar": ["tenants", "users"]
+    "navigation": {
+        "groups": [
+            {
+                "id": "Administration",
+                "title": "administration",
+                "description": "administration",
+                "icon": "bi bi-gear"
+            }
+        ],
+        "entities": ["Tenant", "TenantUser"],
+        "dashboard": [["Administration", ["Tenant", "TenantUser"]]],
+        "navbar": ["Tenant", "TenantUser"]
+    }
 }

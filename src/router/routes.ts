@@ -15,11 +15,6 @@ export const routes: Array<RouteRecordRaw> = [
         name: "home",
         component: HomeView,
     },
-    {
-        path: "/icons",
-        name: "icons",
-        component: () => import("../views/IconsView.vue"),
-    },
     // account
     {
         name: "account",

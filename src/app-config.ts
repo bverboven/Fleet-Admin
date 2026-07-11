@@ -1,4 +1,4 @@
-import { trimRight } from "@/regira_modules/utilities/string-utility";
+import { trimRight } from "regira_modules/utilities/string-utility";
 
 const { BASE_URL, MODE } = import.meta.env;
 

@@ -22,7 +22,7 @@
                     <div v-show="!feedback.status.value" class="row g-0">
                         <div class="col-auto">
                             <div v-if="selected?.id" class="form-control bg-info py-0">
-                                <IconButton icon="selected" class="px-1 me-1" @click="handleSelect(null)" />
+                                <IconButton icon="selected" class="px-1 me-1" @click="handleSelect(undefined)" />
                                 <FormModalButton v-model="selected" class="px-1" /> {{ selected.$title }}
                             </div>
                         </div>
@@ -80,9 +80,8 @@
 
 <script setup lang="ts">
 import { onMounted, type Ref } from "vue"
-import { useVModelField } from "@/regira_modules/vue/vue-helper"
-import { useSearchView } from "@/regira_modules/vue/entities"
-import { Paging, LoadingContainer, Feedback, ButtonType } from "@/regira_modules/vue/ui"
+import { useSearchView } from "regira_modules/vue/entities"
+import { Paging, LoadingContainer, Feedback, ButtonType } from "regira_modules/vue/ui"
 import ResultSummary from "@/components/ResultSummary.vue"
 import config from "../config/config"
 import Entity from "../data/Entity"
@@ -94,17 +93,13 @@ import FilterAdv from "../filter/FilterAdv.vue"
 import Filter from "../filter/Filter.vue"
 import List from "./SelectorList.vue"
 
-const emit = defineEmits<{
-    (e: "update:modelValue", selected: Entity | null): void
-}>()
 const props = defineProps<{
-    modelValue?: Entity | null
     filterDefaults?: Record<string, any>
     itemDefaults?: Ref<Record<string, any>> | Record<string, any>
     pageSize?: number
 }>()
 
-const selected = useVModelField<Entity | null>(props, emit)
+const selected = defineModel<Entity>()
 
 const { service } = useEntityStore()
 
@@ -127,9 +122,9 @@ const {
 
 console.debug("SelectorSearch", { searchObject, pagingInfo, items, itemsCount })
 
-function handleSelect(item: Entity | null) {
+function handleSelect(item?: Entity) {
     feedback.success(item != null ? `${item.$title} selected` : `selection removed`)
-    emit("update:modelValue", item)
+    selected.value = item
     // don't emit 'select' -> wait for submitting (SelectorModalButton)
 }
 

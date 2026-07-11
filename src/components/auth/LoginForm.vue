@@ -38,8 +38,8 @@
 <script setup lang="ts">
 import { ref, computed } from "vue"
 import { useConfig } from "@/app-config"
-import { useLoginForm, type ILoginEmits, type ILoginProps } from "@/regira_modules/vue/auth"
-import { Loading } from "@/regira_modules/vue/ui"
+import { useLoginForm, type ILoginEmits, type ILoginProps } from "regira_modules/vue/auth"
+import { Loading } from "regira_modules/vue/ui"
 
 interface IEmits extends ILoginEmits {}
 const emit = defineEmits<IEmits>()

@@ -11,11 +11,12 @@
 
 <script setup lang="ts">
 import { RouterView, useRouter } from "vue-router"
-import { useAuthStore } from "@/regira_modules/vue/auth"
-import { LoadingContainer, Feedback } from "@/regira_modules/vue/ui"
-import { useDetails } from "@/regira_modules/vue/entities/details"
-import { FormStates } from "@/regira_modules/vue/entities/form"
+import { useAuthStore } from "regira_modules/vue/auth"
+import { LoadingContainer, Feedback } from "regira_modules/vue/ui"
+import { useDetails } from "regira_modules/vue/entities/details"
+import { FormStates } from "regira_modules/vue/entities/form"
 import Entity from "../data/Entity"
+import config from "../config/config"
 import useEntityStore from "../data/store"
 
 const { service } = useEntityStore()
@@ -28,6 +29,6 @@ authStore.$onAction(({ name, after }) => name == "login" && after(() => item.val
 
 const router = useRouter()
 function handleRemove() {
-    router.push(overviewUrl || { name: Entity.name + "Overview" })
+    router.push(overviewUrl || { name: config.key + "Overview" })
 }
 </script>

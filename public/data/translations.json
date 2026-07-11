@@ -1,4 +1,9 @@
 {
+    "administration": {
+        "en": "Administration",
+        "nl": "Administratie",
+        "fr": "Administration"
+    },
     "auth.changePassword": {
         "en": "Change password",
         "nl": "Wachtwoord aanpassen",

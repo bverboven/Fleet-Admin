@@ -10,27 +10,21 @@
 
 <script setup lang="ts">
 import { computed } from "vue"
-import { useVModelField } from "@/regira_modules/vue/vue-helper"
 
-const emit = defineEmits<{
-    (e: "update:modelValue", value: string): void
-}>()
 const props = withDefaults(
     defineProps<{
-        modelValue?: string
         readonly?: boolean
         label?: string
         maxLength?: number
         style?: Record<string, any>
     }>(),
     {
-        modelValue: "",
         label: "Description",
         style: () => ({ height: "7.5rem" }),
     }
 )
 
-const item = useVModelField<string>(props, emit)
+const item = defineModel<string>({ default: "" })
 const label = computed(() => {
     let lblValue = props.label
     if (props.maxLength) {

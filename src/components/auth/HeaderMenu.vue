@@ -30,8 +30,8 @@
 
 <script setup lang="ts">
 import { ref, watch } from "vue"
-import { LoadingContainer } from "@/regira_modules/vue/ui"
-import { useAuthStore } from "@/regira_modules/vue/auth"
+import { LoadingContainer } from "regira_modules/vue/ui"
+import { useAuthStore } from "regira_modules/vue/auth"
 
 const emit = defineEmits<{
     (e: "close"): void

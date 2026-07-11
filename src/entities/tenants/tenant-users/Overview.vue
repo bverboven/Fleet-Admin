@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue"
-import { get } from "@/regira_modules/vue/ioc"
+import { get } from "regira_modules/vue/ioc"
 import Permissions from "@/infrastructure/permissions"
 import type Supplier from "../data/Entity"
 import { Entity, type EntityService, FormModalButton as UserButton } from "../../users"

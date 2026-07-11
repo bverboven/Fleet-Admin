@@ -1,4 +1,4 @@
-import type { ITranslationMessage } from "@/regira_modules/vue/lang"
+import type { ITranslationMessage } from "regira_modules/vue/lang"
 
 export default {
     changePassword: {
