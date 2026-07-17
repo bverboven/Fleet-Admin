@@ -2,8 +2,7 @@
     <Autocomplete v-model="item" :search="search" :max-results="maxResults" :id-selector="idSelector" :display-item-formatter="displayItemFormatter" :placeholder="placeholder" ref="autoEl">
         <template #default="{ item }">
             <div class="row">
-                <div class="col">{{ item.title }}</div>
-                <div v-if="item?.parentEntity" class="col d-none d-md-block"><Icon :name="config.key" class="me-1" /> {{ item.parentEntity?.title }}</div>
+                <div class="col">{{ item?.$title }}</div>
             </div>
         </template>
     </Autocomplete>
@@ -15,7 +14,6 @@ import { Autocomplete } from "regira_modules/vue/ui"
 import { get } from "regira_modules/vue/ioc"
 import type { IEntityService } from "regira_modules/vue/entities"
 import Entity from "../data/Entity"
-import config from "../config/config"
 import useEntityStore from "../data/store"
 
 const emit = defineEmits<{

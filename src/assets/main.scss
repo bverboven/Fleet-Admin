@@ -92,14 +92,12 @@ textarea.form-control {
     }
 }
 
-$bgLight: rgba(13, 202, 240, 0.25);
-
 .feedback-container {
-    background-color: $bgLight;
+    background-color: var(--rg-accent-bg);
 }
 .form-section {
     .form-section-title {
-        background-color: $bgLight;
+        background-color: var(--rg-accent-bg);
     }
     .form-section-body {
         padding-top: 0.25rem;
