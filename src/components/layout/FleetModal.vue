@@ -19,7 +19,7 @@
                                         </h3>
                                     </slot>
                                     <div>
-                                        <LangSelector class="d-none d-sm-inline me-3" />
+                                        <LangSelector class="d-none d-sm-inline me-3" :langs="['en', 'fr', 'nl']" />
                                         <slot name="header-close-button" :handleClose="handleClose">
                                             <IconButton icon="close" :class="[isDanger ? 'btn-danger' : 'btn-outline-danger']" title="close" @click="handleClose" data-dismiss="modal" />
                                         </slot>
@@ -57,7 +57,7 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import { ModalType } from "regira_modules/vue/ui/modal"
-import LangSelector from "./LangSelector.vue"
+import { LangSelector } from "regira_modules/vue/lang"
 
 const emit = defineEmits<{
     (e: "submit"): void
@@ -86,7 +86,7 @@ const isWarning = computed(() => props.type === ModalType.warning)
 const isDanger = computed(() => props.type === ModalType.danger)
 
 const titleClass = computed(() => ({
-    "bg-normal": isNormal.value,
+    "rg-accent-bg": isNormal.value,
     "bg-success": isSuccess.value,
     "bg-danger": isDanger.value,
     "text-white": isDanger.value,
