@@ -1,60 +1,28 @@
-# Fleet-Admin
+# Fleet Admin (front end)
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue 3 + Vite SPA for administering Fleet Manager clients (tenants) — the admin counterpart of the [Fleet Manager front end](https://github.com/Regira/RegiraFleet-Website), running against the [RegiraFleet-Backend](https://github.com/Regira/RegiraFleet-Backend) admin API, built with the [Regira packages](https://github.com/Regira/Regira-Packages).
 
-## Updating
+**Live demo:** [fleet-demo.regira.com/admin/](https://fleet-demo.regira.com/admin/) — a demo login is provided on the sign-in dialog.
 
-```
-npx npm-check-updates
-npx npm-check-updates -u
-```
+## Stack
 
-## symlinks
+- Vue 3, Vite, TypeScript
+- `regira_modules` (npm dependency) — Regira's front-end utility modules and Vue components
+- Runtime i18n (EN/FR/NL) via `public/data/translations.json`
+- Deployed under `/admin/` (see `vite.config.ts` `base`); `public/Web.Config` provides the IIS history-mode rewrite
 
-```
-mklink /J regira_modules C:\Projects\Regira\Regira-JsLib\src
-```
-
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Development
 
 ```sh
 npm install
+npm run dev        # dev server
+npm run build      # type-check + production build to dist/
+npm run test:unit  # Vitest
+npm run lint       # ESLint
 ```
 
-### Compile and Hot-Reload for Development
+The API base URL per environment is configured in `public/config.json`.
 
-```sh
-npm run dev
-```
+## Deployment
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Manual: `npm run build`, then copy `dist/` to the IIS `admin` application folder.
