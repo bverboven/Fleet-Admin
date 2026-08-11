@@ -121,7 +121,10 @@ async function handleRequestSave(item: Entity) {
     }
 }
 async function handleRequestRemove(item: Entity) {
-    await applyRemove(item)
-    handleRemove(item)
+    // applyRemove resolves false when the server refused the delete (409, 403, ...)
+    const removed = await applyRemove(item)
+    if (removed) {
+        handleRemove(item)
+    }
 }
 </script>

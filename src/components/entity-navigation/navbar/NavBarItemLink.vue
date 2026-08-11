@@ -1,5 +1,5 @@
 <template>
-    <RouterLink :to="{ name: item.routeName, query: item.initialQuery || {} }" @click="$emit('select', item.id)">
+    <RouterLink :to="{ name: item.routeName, query: (item.initialQuery || {}) as LocationQueryRaw }" @click="$emit('select', item.id)">
         <icon :name="item.icon ?? ''" />
         <slot>
             <span class="d-md-none d-xl-inline ms-2">{{ $t(item.title) }}</span>
@@ -8,6 +8,7 @@
 </template>
 
 <script setup lang="ts">
+import type { LocationQueryRaw } from "vue-router"
 import type { INavItem } from "regira_modules/vue/entities"
 
 defineEmits<{

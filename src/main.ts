@@ -115,7 +115,7 @@ fetch(`${appConfig.baseUrl}/config.json?v=${formatDateTime(new Date(), "yyyyMMdd
         app.use(authPlugin, {
             enabled: true,
             clientApp: processedConfig.clientApp,
-            loginUrl: processedConfig.loginUrl,
+            loginUrl: processedConfig.loginUrl.replace(/{clientApp}/, processedConfig.clientApp),
             tokenManager: new LocalStorageTokenManager(),
             axios,
             onAuthenticationChange: async (auth) => {

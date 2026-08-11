@@ -1,5 +1,6 @@
 {
-    "loginUrl": "auth/?clientApp=fleet-admin",
+    "clientApp": "fleet-admin",
+    "loginUrl": "auth/?clientApp={clientApp}",
     "api": {
         "development": "https://localhost:7215/",
         "_development": "https://fleet-demo.regira.com/admin-api",

@@ -1,4 +1,4 @@
-import { SearchObjectBase } from "regira_modules/vue/entities"
+import { SearchObjectBase, ArchivedFilter } from "regira_modules/vue/entities"
 
 export class EntitySearchObject extends SearchObjectBase {
     code?: string
@@ -9,7 +9,7 @@ export class EntitySearchObject extends SearchObjectBase {
     minLastModified?: Date
     maxLastModified?: Date
 
-    isArchived?: boolean
+    archived?: ArchivedFilter
 }
 
 export default EntitySearchObject

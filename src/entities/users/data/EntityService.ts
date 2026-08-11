@@ -11,7 +11,7 @@ export class EntityService extends EntityServiceBase<Entity> {
     protected override prepareItem(item: Entity): Entity {
         item.userClaims = item.userClaims?.filter((x) => !x._deleted)
         item.tenantClaims = item.tenantClaims?.filter((x) => !x._deleted)
-        return item
+        return super.prepareItem(item)
     }
 
     override toEntity(item: object): Entity {
