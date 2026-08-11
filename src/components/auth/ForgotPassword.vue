@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="handleSubmit" style="height: 10rem">
         <div class="mb-2">
-            <div v-if="feedback.status.value == FeedbackStatus.none" class="text-info">{{ $t("auth.fillInUsernameMsg") }}</div>
+            <div v-if="feedback.status == FeedbackStatus.none" class="text-info">{{ $t("auth.fillInUsernameMsg") }}</div>
             <Feedback v-else :feedback="feedback" />
         </div>
         <LoadingContainer :is-loading="isLoading">
