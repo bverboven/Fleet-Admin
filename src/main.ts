@@ -116,6 +116,8 @@ fetch(`${appConfig.baseUrl}/config.json?v=${formatDateTime(new Date(), "yyyyMMdd
             enabled: true,
             clientApp: processedConfig.clientApp,
             loginUrl: processedConfig.loginUrl.replace(/{clientApp}/, processedConfig.clientApp),
+            // user create/edit bodies carry newPassword: keep them out of the failed-request console logging
+            credentialUrls: ["users", "users/*"],
             tokenManager: new LocalStorageTokenManager(),
             axios,
             onAuthenticationChange: async (auth) => {
