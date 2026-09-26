@@ -66,7 +66,7 @@
 <script setup lang="ts">
 import { useSearchView, useRouteOverview, type OverviewEmits } from "regira_modules/vue/entities"
 import { Paging, LoadingContainer, Feedback } from "regira_modules/vue/ui"
-import { useAuthStore } from "regira_modules/vue/auth"
+import { onAuthenticated } from "regira_modules/vue/auth"
 import ResultSummary from "@/components/ResultSummary.vue"
 import config from "../config/config"
 import Entity from "../data/Entity"
@@ -110,9 +110,8 @@ const { updateOverviewRoute } = useRouteOverview({
     defaultPageSize: config.defaultPageSize,
 })
 
-// trigger searchHandler when logging in or refreshing token
-const authStore = useAuthStore()
-authStore.$onAction(({ name, after }) => ["login", "refresh"].includes(name) && after(() => authStore.isAuthenticated && searchHandler(false)))
+// re-run the search once a token is present: sign-in, refresh, or a stored token restored on reload
+onAuthenticated(() => searchHandler(false), { immediate: false })
 
 async function handleRequestSave(item: Entity) {
     const result = await applySave(item)
