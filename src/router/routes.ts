@@ -87,7 +87,7 @@ export const routes: Array<RouteRecordRaw> = [
     {
         name: "catchAll",
         path: "/:pathMatch(.*)*",
-        redirect: (from) => ({ name: "notFound", query: { url: from.fullPath } }),
+        redirect: (from) => ({ name: "notFound", params: {}, query: { url: from.fullPath } }), // params: {} — vue-router 5 warns (R0100) without it
         meta: {
             allowAnonymous: true,
         },

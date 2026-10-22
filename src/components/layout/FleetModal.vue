@@ -2,7 +2,7 @@
     <transition name="modal">
         <div v-if="isVisible" class="modal-mask" @keydown.esc="handleClose">
             <div class="modal-wrapper">
-                <div class="modal show d-block" tabindex="-1">
+                <div ref="dialog" class="modal show d-block" tabindex="-1">
                     <div class="modal-dialog modal-dialog-scrollable" :class="{ 'full-width': fullWidth }">
                         <div class="modal-content" :style="{ 'min-height': fullWidth ? '60vh' : 'inherit' }">
                             <div v-if="showHeader" class="modal-header py-2" :class="titleClass">
@@ -38,7 +38,7 @@
                                                 <IconButton icon="cancel" class="btn-outline-secondary" @click="handleCancel">{{ $t("modal.cancel") }}</IconButton>
                                             </div>
                                         </slot>
-                                        <slot name="footer-submit-button" :handleClose="handleSubmit">
+                                        <slot name="footer-submit-button" :handleSubmit="handleSubmit" :handleClose="handleSubmit">
                                             <div>
                                                 <IconButton icon="submit" :class="isDanger ? 'btn-danger' : 'btn-success'" @click="handleSubmit">{{ $t("modal.confirm") }}</IconButton>
                                             </div>
@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue"
+import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue"
 import { ModalType } from "regira_modules/vue/ui/modal"
 import { LangSelector } from "regira_modules/vue/lang"
 
@@ -100,6 +100,33 @@ const footerClass = computed(() => ({}))
 const handleClose = () => emit("close")
 const handleCancel = () => emit("cancel")
 const handleSubmit = () => emit("submit")
+
+// Esc is heard on the mask, so it needs focus inside the modal: take it when the modal opens, unless an element in it
+// already has it (an input the content focused itself). Give it back when the modal closes, to the element that had
+// it (the button that opened the modal), so a keyboard user keeps their place
+const dialog = ref<HTMLElement>()
+let returnFocus: HTMLElement | undefined
+function restoreFocus() {
+    const el = returnFocus
+    returnFocus = undefined
+    const active = document.activeElement
+    // only while focus is still the modal's: never take it from where the app moved it meanwhile
+    const inModal = !active || active === document.body || !!dialog.value?.contains(active)
+    if (el?.isConnected && inModal) el.focus({ preventScroll: true })
+}
+watch(
+    () => props.isVisible,
+    async (isVisible) => {
+        if (!isVisible) return restoreFocus()
+        const active = document.activeElement
+        if (active instanceof HTMLElement && active !== document.body) returnFocus = active
+        await nextTick()
+        const el = dialog.value
+        if (el && !el.contains(document.activeElement)) el.focus({ preventScroll: true })
+    },
+    { immediate: true }
+)
+onBeforeUnmount(restoreFocus)
 </script>
 
 <style scoped>

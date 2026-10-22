@@ -1,4 +1,6 @@
 import { ref, computed, getCurrentInstance } from "vue"
+import { useRouter } from "vue-router"
+import { routeAllows, useAuthStore } from "regira_modules/vue/auth"
 import { type IConfig, type INavItem, importDashboard, importNavbar, buildNavigationTree, type INavCore } from "regira_modules/vue/entities"
 import { useConfig } from "@/app-config"
 
@@ -11,8 +13,13 @@ export function useNavigation() {
 
     const configs = Object.entries(app.appContext.config.globalProperties.$configs).map(([, config]) => config as IConfig)
 
+    // an entry shows when the route guard would let this user open its overview: the meta.policy / meta.permissions a
+    // slice's setup.ts puts on its routes. Recomputed on sign-in, since the policies read the auth store
+    const router = useRouter()
+    const authStore = useAuthStore()
     function hasAccess(config: IConfig): boolean {
-        return true
+        const name = `${config.key}Overview`
+        return !router.hasRoute(name) || routeAllows(router.resolve({ name }), authStore)
     }
 
     const dashboardItems = ref<Array<INavCore>>()

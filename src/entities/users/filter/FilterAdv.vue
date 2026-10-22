@@ -2,11 +2,11 @@
     <div class="adv-filter">
         <div class="row">
             <div class="col mb-2" v-if="resultCount != null">
-                <span class="text-info">{{ resultCount }} results</span>
+                <span class="text-info">{{ resultCount }} {{ $t("results") }}</span>
                 <small v-if="filterIsActive" class="ms-2 italic-muted">(Filters are applied)</small>
             </div>
             <div class="col mb-2 text-end">
-                <IconButton icon="clear" @click="handleReset" :showText="true" />
+                <IconButton icon="clear" @click="handleReset" :aria-label="$t('clear')" />
             </div>
         </div>
         <div class="row">
