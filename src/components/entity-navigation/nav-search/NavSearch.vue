@@ -30,7 +30,7 @@ function handleSearch() {
     }
     var searchEntityRoute: RouteLocationRaw = {
         name: `${searchItemConfig.value.key}Overview`,
-        query: { q: q.value },
+        query: q.value ? { q: q.value } : {}, // an empty ?q= reads as an active filter on the overview
     }
     emit("search", { q: q.value, type: searchItemConfig.value.key })
     q.value = "" // clear search input

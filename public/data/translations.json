@@ -308,5 +308,55 @@
         "en": "Welcome {name}",
         "nl": "Welkom {name}",
         "fr": "Bienvenue {name}"
+    },
+    "clear": {
+        "en": "Clear",
+        "nl": "Wissen",
+        "fr": "Effacer"
+    },
+    "select": {
+        "en": "Select",
+        "nl": "Selecteren",
+        "fr": "Sélectionner"
+    },
+    "remove": {
+        "en": "Remove",
+        "nl": "Verwijderen",
+        "fr": "Supprimer"
+    },
+    "restore": {
+        "en": "Restore",
+        "nl": "Herstel",
+        "fr": "Restaurer"
+    },
+    "search": {
+        "en": "Search",
+        "nl": "Zoeken",
+        "fr": "Rechercher"
+    },
+    "advancedSearch": {
+        "en": "Advanced search",
+        "nl": "Geavanceerd zoeken",
+        "fr": "Recherche avancée"
+    },
+    "results": {
+        "en": "results",
+        "nl": "resultaten",
+        "fr": "résultats"
+    },
+    "cancel": {
+        "en": "Cancel",
+        "nl": "Annuleren",
+        "fr": "Annuler"
+    },
+    "close": {
+        "en": "Close",
+        "nl": "Sluiten",
+        "fr": "Fermer"
+    },
+    "auth.notConfirmed": {
+        "en": "This account is not confirmed yet. Follow the link we mailed you.",
+        "nl": "Dit account is nog niet bevestigd. Volg de link die we je mailden.",
+        "fr": "Ce compte n'est pas encore confirmé. Suivez le lien que nous vous avons envoyé."
     }
 }

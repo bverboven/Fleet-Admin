@@ -137,7 +137,7 @@ fetch(`${appConfig.baseUrl}/config.json?v=${formatDateTime(new Date(), "yyyyMMdd
                     }
                     app.config.globalProperties.$setAppStatus(AppStatus.Ready)
 
-                    setLangCode(auth.culture!.split("-")[0] || "en")
+                    setLangCode(auth.culture?.split("-")[0] || "en") // a token without a culture claim keeps English
                     document.title = translateMessage(processedConfig.title)
 
                     console.debug("ready", {
@@ -149,6 +149,8 @@ fetch(`${appConfig.baseUrl}/config.json?v=${formatDateTime(new Date(), "yyyyMMdd
                         icons: app.config.globalProperties.$icons.map,
                     })
                 } else {
+                    // the pool is per tab: the next account must not see the previous one's rows
+                    defaultPoolCache.clear()
                     app.config.globalProperties.$feedback.fail(`User logged out`)
                 }
             },

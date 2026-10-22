@@ -30,8 +30,11 @@ import type Entity from "../data/Entity"
 import useEntityStore from "../data/store"
 import FormModalButton from "../details/FormModalButton.vue"
 
-interface Emits extends /* @vue-ignore */ OverviewEmits<Entity> {}
-const emit = defineEmits<Emits & { (e: "update:modelValue", value: Array<Entity>): void; (e: "select", selected?: Entity): void }>()
+// the OverviewEmits tuple shape: an added event keeps the inherited ones
+interface Emits extends /* @vue-ignore */ OverviewEmits<Entity> {
+    select: [selected?: Entity]
+}
+const emit = defineEmits<Emits>()
 const props = defineProps<{ modelValue?: Array<Entity>; selected?: Entity }>()
 
 const isSelected = computed(() => (item: Entity) => item.$id == props.selected?.$id)

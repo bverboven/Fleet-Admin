@@ -66,7 +66,7 @@
 <script setup lang="ts">
 import { useSearchView, useRouteOverview, type OverviewEmits } from "regira_modules/vue/entities"
 import { Paging, LoadingContainer, Feedback } from "regira_modules/vue/ui"
-import { onAuthenticated } from "regira_modules/vue/auth"
+import { onAuthenticated, useAuth, useGlobalAuth } from "regira_modules/vue/auth"
 import ResultSummary from "@/components/ResultSummary.vue"
 import config from "../config/config"
 import Entity from "../data/Entity"
@@ -110,8 +110,23 @@ const { updateOverviewRoute } = useRouteOverview({
     defaultPageSize: config.defaultPageSize,
 })
 
-// re-run the search once a token is present: sign-in, refresh, or a stored token restored on reload
-onAuthenticated(() => searchHandler(false), { immediate: false })
+// re-run the search once a token is present: sign-in, refresh, or a stored token restored on reload. Another
+// account's rows go first, so a reload the new one is refused does not leave them on screen
+let shownFor = useGlobalAuth()?.authData?.userId // whose rows are on screen
+const shownToken = useAuth()?.tokenManager?.token // the stored token the mount fetch sends before onAuthenticated validates it
+onAuthenticated(
+    () => {
+        const account = useGlobalAuth()?.authData?.userId
+        if (useGlobalAuth()?.authData?.token === shownToken) shownFor = account
+        if (account !== shownFor) {
+            shownFor = account
+            items.value = undefined
+            itemsCount.value = undefined
+        }
+        searchHandler(false)
+    },
+    { immediate: false }
+)
 
 async function handleRequestSave(item: Entity) {
     const result = await applySave(item)

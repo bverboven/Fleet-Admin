@@ -47,7 +47,7 @@ const router = useRouter()
 const resetPasswordRoute = router.resolve({ name: "resetPassword" })
 const siteUrl = `${location.protocol}//${location.host}${config.baseUrl}${resetPasswordRoute.fullPath}`
 
-const { username, isLoading, isFormValid, isSuccess, handleSubmit } = useForgotPasswordForm(props, emit, { siteUrl, siteName: config.title })
+const { username, isLoading, isFormValid, isSuccess, handleSubmit } = useForgotPasswordForm(props, emit, { siteUrl }) // the mail subject comes from the API's AccountEmails:SiteName
 const { translate: tm } = useLang()
 
 const feedback = useFeedback()

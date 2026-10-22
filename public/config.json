@@ -6,6 +6,7 @@
         "_development": "https://fleet-demo.regira.com/admin-api",
         "production": "https://fleet.regira.com/admin-api"
     },
+    "culture": "en-US",
     "includeCredentials": false,
     "isDebug": true,
     "isDemo": true,
